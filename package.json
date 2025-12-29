@@ -1,0 +1,36 @@
+{
+  "name": "smartbrain-bots",
+  "version": "1.0.0",
+  "description": "Stripe-powered plugin bots for smart contract deployment and auditing",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "deploy-bot": "node bots/SmartContractDeploy/index.js",
+    "audit-bot": "node bots/SmartContractAudit/index.js",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "keywords": [
+    "stripe",
+    "smart-contracts",
+    "blockchain",
+    "bot",
+    "automation"
+  ],
+  "author": "SmartBrain Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^14.10.0",
+    "dotenv": "^16.3.1",
+    "body-parser": "^1.20.2",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
