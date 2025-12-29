@@ -1,0 +1,44 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage/
+*.lcov
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
