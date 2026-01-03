@@ -8,7 +8,8 @@
 const axios = require('axios');
 
 async function deployNFTContract() {
-  const API_BASE_URL = 'http://localhost:3000';
+  const API_PORT = process.env.DEPLOY_BOT_PORT || 3000;
+  const API_BASE_URL = `http://localhost:${API_PORT}`;
   const API_KEY = 'your_api_key_here';
   const USER_ID = 'user@example.com';
 
@@ -83,7 +84,8 @@ async function deployNFTContract() {
 }
 
 async function checkDeploymentStatus(deploymentId) {
-  const API_BASE_URL = 'http://localhost:3000';
+  const API_PORT = process.env.DEPLOY_BOT_PORT || 3000;
+  const API_BASE_URL = `http://localhost:${API_PORT}`;
   const API_KEY = 'your_api_key_here';
   const USER_ID = 'user@example.com';
 

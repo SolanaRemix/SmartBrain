@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { router: paymentRouter, requireActiveSubscription } = require('./payment');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.AUDIT_BOT_PORT || 3001;
 
 // Middleware
 app.use(bodyParser.json());
@@ -65,7 +65,7 @@ app.post('/api/audit/contract', requireActiveSubscription, async (req, res) => {
 
     // Security checks
     if (options.checkSecurity !== false) {
-      for (const [key, vuln] of Object.entries(vulnerabilityPatterns)) {
+      for (const vuln of Object.values(vulnerabilityPatterns)) {
         if (vuln.pattern.test(contract.source)) {
           const lines = contract.source.split('\n');
           const lineNumber = lines.findIndex(line => vuln.pattern.test(line)) + 1;
@@ -271,7 +271,7 @@ app.get('/api/audit/info', (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error('Unhandled error:', err);
   res.status(500).json({
     success: false,

@@ -8,7 +8,8 @@
 const axios = require('axios');
 
 async function createSubscription() {
-  const API_BASE_URL = 'http://localhost:3000';
+  const API_PORT = process.env.DEPLOY_BOT_PORT || 3000;
+  const API_BASE_URL = `http://localhost:${API_PORT}`;
   const USER_EMAIL = 'user@example.com';
   const USER_ID = 'user_123';
 
@@ -44,7 +45,8 @@ async function createSubscription() {
 }
 
 async function checkSubscriptionStatus() {
-  const API_BASE_URL = 'http://localhost:3000';
+  const API_PORT = process.env.DEPLOY_BOT_PORT || 3000;
+  const API_BASE_URL = `http://localhost:${API_PORT}`;
   const USER_ID = 'user@example.com';
 
   try {
@@ -80,7 +82,8 @@ async function checkSubscriptionStatus() {
 }
 
 async function manageSubscription() {
-  const API_BASE_URL = 'http://localhost:3000';
+  const API_PORT = process.env.DEPLOY_BOT_PORT || 3000;
+  const API_BASE_URL = `http://localhost:${API_PORT}`;
   const CUSTOMER_ID = 'cus_xxxxxxxxxxxxx'; // Get from Stripe
 
   try {

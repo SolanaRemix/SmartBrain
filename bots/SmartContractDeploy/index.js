@@ -19,7 +19,7 @@ app.use('/api/payment/deploy', paymentRouter);
  */
 app.post('/api/deploy/contract', requireActiveSubscription, async (req, res) => {
   try {
-    const { userId, contract, network, constructorArgs, verification } = req.body;
+    const { userId, contract, network, verification } = req.body;
 
     // Validate required fields
     if (!contract || !network) {
@@ -185,7 +185,7 @@ app.get('/api/deploy/info', (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error('Unhandled error:', err);
   res.status(500).json({
     success: false,

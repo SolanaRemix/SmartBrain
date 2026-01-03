@@ -76,6 +76,23 @@ router.post('/create-checkout-session', async (req, res) => {
   try {
     const { userEmail, userId } = req.body;
 
+    // Validate input parameters
+    if (!userEmail || typeof userEmail !== 'string' || !userEmail.includes('@')) {
+      return res.status(400).json({
+        success: false,
+        error: 'INVALID_EMAIL',
+        message: 'A valid email address is required'
+      });
+    }
+
+    if (!userId || typeof userId !== 'string' || userId.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'INVALID_USER_ID',
+        message: 'A valid user ID is required'
+      });
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       payment_method_types: ['card'],
@@ -104,7 +121,7 @@ router.post('/create-checkout-session', async (req, res) => {
     res.status(500).json({
       success: false,
       error: 'CHECKOUT_ERROR',
-      message: error.message
+      message: 'Failed to create checkout session. Please try again later.'
     });
   }
 });
@@ -116,8 +133,29 @@ router.post('/create-portal-session', async (req, res) => {
   try {
     const { customerId } = req.body;
 
+    // Validate customerId input
+    if (!customerId || typeof customerId !== 'string' || customerId.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'CUSTOMER_ID_REQUIRED',
+        message: 'A valid Stripe customer ID is required'
+      });
+    }
+
+    const sanitizedCustomerId = customerId.trim();
+    
+    // Basic Stripe customer ID format check (e.g., "cus_XXXXXXXX")
+    const customerIdPattern = /^cus_[A-Za-z0-9]+$/;
+    if (!customerIdPattern.test(sanitizedCustomerId)) {
+      return res.status(400).json({
+        success: false,
+        error: 'INVALID_CUSTOMER_ID_FORMAT',
+        message: 'Customer ID must be a valid Stripe customer identifier'
+      });
+    }
+
     const session = await stripe.billingPortal.sessions.create({
-      customer: customerId,
+      customer: sanitizedCustomerId,
       return_url: `${req.protocol}://${req.get('host')}/dashboard`,
     });
 
@@ -130,7 +168,7 @@ router.post('/create-portal-session', async (req, res) => {
     res.status(500).json({
       success: false,
       error: 'PORTAL_ERROR',
-      message: error.message
+      message: 'Failed to create portal session. Please try again later.'
     });
   }
 });
@@ -218,7 +256,7 @@ router.get('/subscription-status', async (req, res) => {
     res.status(500).json({
       success: false,
       error: 'STATUS_CHECK_ERROR',
-      message: error.message
+      message: 'Failed to check subscription status. Please try again later.'
     });
   }
 });

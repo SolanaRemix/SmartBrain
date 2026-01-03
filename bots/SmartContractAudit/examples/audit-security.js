@@ -8,7 +8,9 @@
 const axios = require('axios');
 
 async function auditContract() {
-  const API_BASE_URL = 'http://localhost:3001';
+  const API_HOST = process.env.AUDIT_BOT_HOST || 'localhost';
+  const API_PORT = process.env.AUDIT_BOT_PORT || 3001;
+  const API_BASE_URL = `http://${API_HOST}:${API_PORT}`;
   const API_KEY = 'your_api_key_here'; // Get from subscription email
   const USER_ID = 'user@example.com';
 

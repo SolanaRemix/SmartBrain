@@ -8,7 +8,8 @@
 const axios = require('axios');
 
 async function deployERC20Token() {
-  const API_BASE_URL = 'http://localhost:3000';
+  const API_PORT = process.env.DEPLOY_BOT_PORT || 3000;
+  const API_BASE_URL = `http://localhost:${API_PORT}`;
   const API_KEY = 'your_api_key_here'; // Get from subscription email
   const USER_ID = 'user@example.com';
 

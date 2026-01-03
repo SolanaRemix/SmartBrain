@@ -8,7 +8,8 @@
 const axios = require('axios');
 
 async function quickSecurityScan() {
-  const API_BASE_URL = 'http://localhost:3001';
+  const API_PORT = process.env.AUDIT_BOT_PORT || 3001;
+  const API_BASE_URL = `http://localhost:${API_PORT}`;
   const API_KEY = 'your_api_key_here';
   const USER_ID = 'user@example.com';
 
