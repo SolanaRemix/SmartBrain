@@ -7,18 +7,28 @@ const router = express.Router();
 
 /**
  * Verify user has an active subscription for SmartContractDeploy bot
- * @param {string} userId - User ID or customer ID
+ * @param {string} userIdentifier - User identifier (user ID or email)
  * @returns {Promise<boolean>} - True if subscription is active
  */
-async function verifySubscription(userId) {
+async function verifySubscription(userIdentifier) {
   try {
-    // Search for customer by metadata or email
-    const customers = await stripe.customers.list({
-      limit: 1,
-      email: userId // or use metadata to match userId
-    });
+    let customers;
 
-    if (customers.data.length === 0) {
+    // If the identifier looks like an email, search by email; otherwise search by metadata.userId
+    if (typeof userIdentifier === 'string' && userIdentifier.includes('@')) {
+      customers = await stripe.customers.list({
+        limit: 1,
+        email: userIdentifier
+      });
+    } else {
+      // Search customers by metadata.userId for non-email identifiers
+      customers = await stripe.customers.search({
+        query: `metadata['userId']:'${userIdentifier}'`,
+        limit: 1
+      });
+    }
+
+    if (!customers || customers.data.length === 0) {
       return false;
     }
 
