@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { router: paymentRouter, requireActiveSubscription } = require('./payment');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.DEPLOY_BOT_PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
