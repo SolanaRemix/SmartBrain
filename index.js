@@ -2,7 +2,7 @@ require('dotenv').config();
 
 /**
  * SmartBrain Bots - Main Entry Point
- * 
+ *
  * This file allows running both bots simultaneously or individually.
  * Each bot runs on a different port to avoid conflicts.
  */
@@ -18,7 +18,7 @@ console.log('=== SmartBrain Bots Starting ===\n');
 // Start SmartContractDeploy Bot
 deployBot.listen(DEPLOY_PORT, () => {
   console.log(`✅ SmartContractDeploy Bot running on port ${DEPLOY_PORT}`);
-  console.log(`   Price: $9/month`);
+  console.log('   Price: $9/month');
   console.log(`   Health: http://localhost:${DEPLOY_PORT}/health`);
   console.log(`   Info: http://localhost:${DEPLOY_PORT}/api/deploy/info`);
 });
@@ -26,7 +26,7 @@ deployBot.listen(DEPLOY_PORT, () => {
 // Start SmartContractAudit Bot
 auditBot.listen(AUDIT_PORT, () => {
   console.log(`✅ SmartContractAudit Bot running on port ${AUDIT_PORT}`);
-  console.log(`   Price: $4/month`);
+  console.log('   Price: $4/month');
   console.log(`   Health: http://localhost:${AUDIT_PORT}/health`);
   console.log(`   Info: http://localhost:${AUDIT_PORT}/api/audit/info`);
 });

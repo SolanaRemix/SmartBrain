@@ -67,7 +67,7 @@ app.post('/api/audit/contract', requireActiveSubscription, async (req, res) => {
     }
 
     const auditId = `aud_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    
+
     // Perform audit analysis
     const findings = [];
     const gasOptimizations = [];
@@ -78,7 +78,7 @@ app.post('/api/audit/contract', requireActiveSubscription, async (req, res) => {
         if (vuln.pattern.test(contract.source)) {
           const lines = contract.source.split('\n');
           const lineNumber = lines.findIndex(line => vuln.pattern.test(line)) + 1;
-          
+
           findings.push({
             severity: vuln.severity,
             category: 'security',
@@ -123,10 +123,10 @@ app.post('/api/audit/contract', requireActiveSubscription, async (req, res) => {
     };
 
     // Calculate score (10 - deductions based on severity)
-    const score = Math.max(0, 10 - 
-      (summary.critical * 3) - 
-      (summary.high * 2) - 
-      (summary.medium * 1) - 
+    const score = Math.max(0, 10 -
+      (summary.critical * 3) -
+      (summary.high * 2) -
+      (summary.medium * 1) -
       (summary.low * 0.5)
     );
 
@@ -275,7 +275,7 @@ app.get('/api/audit/info', (req, res) => {
       'Rust',
       'Move'
     ],
-    subscriptionUrl: `/subscribe/audit`
+    subscriptionUrl: '/subscribe/audit'
   });
 });
 

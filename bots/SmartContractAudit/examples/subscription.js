@@ -1,6 +1,6 @@
 /**
  * Example 3: Subscribe to SmartContractAudit Bot
- * 
+ *
  * This example demonstrates the complete subscription flow
  * using Stripe Checkout.
  */
@@ -35,7 +35,7 @@ async function createSubscription() {
       console.log('Checkout URL:', response.data.url);
       console.log('\nPlease visit the URL above to complete your subscription.');
       console.log('After payment, you will receive an API key via email.');
-      
+
       return response.data;
     }
 
@@ -65,14 +65,14 @@ async function checkSubscriptionStatus() {
       console.log('Bot:', response.data.botName);
       console.log('Price:', response.data.price);
       console.log('Subscription Active:', response.data.subscriptionActive);
-      
+
       if (!response.data.subscriptionActive) {
         console.log('\n⚠️  No active subscription found.');
         console.log('Subscribe at: http://localhost:3001/subscribe/audit');
       } else {
         console.log('✅ Subscription is active! You can use the bot.');
       }
-      
+
       return response.data;
     }
 
@@ -104,7 +104,7 @@ async function getAuditHistory() {
 
     if (response.data.success) {
       console.log(`\nTotal Audits: ${response.data.total}`);
-      
+
       if (response.data.audits.length > 0) {
         console.log('\n=== AUDIT HISTORY ===');
         response.data.audits.forEach((audit, index) => {
@@ -118,7 +118,7 @@ async function getAuditHistory() {
       } else {
         console.log('No audits found yet.');
       }
-      
+
       return response.data;
     }
 
@@ -145,7 +145,7 @@ async function runSubscriptionExample() {
   console.log('Step 3: View audit history');
   // Uncomment to test:
   // await getAuditHistory();
-  
+
   console.log('\nExample completed!');
 }
 

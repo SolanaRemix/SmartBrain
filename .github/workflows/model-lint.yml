@@ -1,0 +1,94 @@
+name: Model Lint
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'models/**'
+      - 'training/configs/**'
+      - 'datasets/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'models/**'
+      - 'training/configs/**'
+      - 'datasets/**'
+
+jobs:
+  lint-configs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      
+      - name: Validate JSON files
+        run: |
+          echo "Validating JSON configuration files..."
+          
+          # Validate model metadata files
+          find models -name "*.json" -type f | while read jsonfile; do
+            echo "Checking $jsonfile..."
+            if node -e "JSON.parse(require('fs').readFileSync('$jsonfile', 'utf8'))"; then
+              echo "  ✓ Valid JSON"
+            else
+              echo "  ✗ Invalid JSON"
+              exit 1
+            fi
+          done
+          
+          # Validate training configs
+          find training/configs -name "*.json" -type f 2>/dev/null | while read jsonfile; do
+            echo "Checking $jsonfile..."
+            if node -e "JSON.parse(require('fs').readFileSync('$jsonfile', 'utf8'))"; then
+              echo "  ✓ Valid JSON"
+            else
+              echo "  ✗ Invalid JSON"
+              exit 1
+            fi
+          done || true
+          
+          echo "JSON validation complete!"
+      
+      - name: Validate dataset schemas
+        run: |
+          echo "Validating dataset files..."
+          
+          find datasets -name "*.json" -type f | while read dataset; do
+            echo "Checking $dataset..."
+            if node -e "JSON.parse(require('fs').readFileSync('$dataset', 'utf8'))"; then
+              echo "  ✓ Valid JSON"
+            else
+              echo "  ✗ Invalid JSON"
+              exit 1
+            fi
+          done || true
+          
+          echo "Dataset validation complete!"
+      
+      - name: Check for required metadata fields
+        run: |
+          echo "Checking required metadata fields..."
+          
+          find models -name "metadata.json" -type f | while read metadata; do
+            echo "Checking $metadata..."
+            MISSING_FIELDS=""
+            
+            for field in name version framework task; do
+              HAS_FIELD=$(node -e "const m = JSON.parse(require('fs').readFileSync('$metadata', 'utf8')); console.log(!!m.$field)" 2>/dev/null || echo "false")
+              if [ "$HAS_FIELD" != "true" ]; then
+                MISSING_FIELDS="$MISSING_FIELDS $field"
+              fi
+            done
+            
+            if [ -n "$MISSING_FIELDS" ]; then
+              echo "  ⚠ Missing required fields:$MISSING_FIELDS"
+            else
+              echo "  ✓ All required fields present"
+            fi
+          done || true

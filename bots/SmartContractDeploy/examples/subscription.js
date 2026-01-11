@@ -1,6 +1,6 @@
 /**
  * Example 3: Subscribe to SmartContractDeploy Bot
- * 
+ *
  * This example demonstrates the complete subscription flow
  * using Stripe Checkout.
  */
@@ -35,7 +35,7 @@ async function createSubscription() {
       console.log('Checkout URL:', response.data.url);
       console.log('\nPlease visit the URL above to complete your subscription.');
       console.log('After payment, you will receive an API key via email.');
-      
+
       return response.data;
     }
 
@@ -65,14 +65,14 @@ async function checkSubscriptionStatus() {
       console.log('Bot:', response.data.botName);
       console.log('Price:', response.data.price);
       console.log('Subscription Active:', response.data.subscriptionActive);
-      
+
       if (!response.data.subscriptionActive) {
         console.log('\n⚠️  No active subscription found.');
         console.log('Subscribe at: http://localhost:3000/subscribe/deploy');
       } else {
         console.log('✅ Subscription is active! You can use the bot.');
       }
-      
+
       return response.data;
     }
 
@@ -108,7 +108,7 @@ async function manageSubscription() {
       console.log('- Update payment method');
       console.log('- View invoices');
       console.log('- Cancel subscription');
-      
+
       return response.data;
     }
 
@@ -135,7 +135,7 @@ async function runSubscriptionExample() {
   console.log('Step 3: Manage subscription (for existing customers)');
   // Uncomment to test:
   // await manageSubscription();
-  
+
   console.log('\nExample completed!');
 }
 

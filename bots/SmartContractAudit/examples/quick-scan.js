@@ -1,6 +1,6 @@
 /**
  * Example 2: Quick security scan
- * 
+ *
  * This example demonstrates using the quick scan feature
  * for rapid security checks.
  */
@@ -49,11 +49,11 @@ async function quickSecurityScan() {
 
     if (response.data.success) {
       console.log('✅ Quick scan completed!\n');
-      
+
       const { criticalIssues, issueCount, recommendation } = response.data;
-      
+
       console.log(`Critical Issues Found: ${issueCount}`);
-      
+
       if (criticalIssues.length > 0) {
         console.log('\n⚠️  CRITICAL ISSUES:');
         criticalIssues.forEach((issue, index) => {
@@ -62,9 +62,9 @@ async function quickSecurityScan() {
       } else {
         console.log('✅ No critical issues detected');
       }
-      
+
       console.log(`\nRecommendation: ${recommendation}`);
-      
+
       return response.data;
     }
 

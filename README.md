@@ -1,6 +1,199 @@
-# SmartBrain Bots
+# 🧠 SmartBrain
 
-Stripe-powered plugin bots for smart contract deployment and auditing on blockchain platforms.
+> **AI/ML Engine & Automation Platform for Smart Contract Development**  
+> Part of the CyberAi Ecosystem
+
+[![Build Status](https://github.com/SolanaRemix/SmartBrain/workflows/CI/badge.svg)](https://github.com/SolanaRemix/SmartBrain/actions)
+[![CodeQL](https://github.com/SolanaRemix/SmartBrain/workflows/CodeQL/badge.svg)](https://github.com/SolanaRemix/SmartBrain/security/code-scanning)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Node Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](package.json)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
+---
+
+## Overview
+
+SmartBrain is a comprehensive platform that combines AI/ML capabilities with Stripe-powered automation bots for smart contract development. It provides a complete infrastructure for model training, inference, and automated smart contract deployment and auditing.
+
+### Key Features
+
+- 🤖 **ML Pipeline**: Complete training and inference infrastructure
+- 🔒 **Security Auditing**: Automated smart contract security analysis
+- 🚀 **Deployment Automation**: Multi-chain contract deployment
+- 📊 **Model Management**: Registry, versioning, and validation
+- 🔧 **CI/CD Integration**: GitHub Actions workflows
+- 💬 **Agent Integration**: GitHub Copilot terminal commands
+
+---
+
+## 🏗️ Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    SmartBrain Platform                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────┐  │
+│  │  ML Engine   │  │  Bot Suite   │  │  Infrastructure  │  │
+│  │              │  │              │  │                  │  │
+│  │ • Training   │  │ • Deploy Bot │  │ • Workflows      │  │
+│  │ • Inference  │  │ • Audit Bot  │  │ • Validation     │  │
+│  │ • Models     │  │ • Payment    │  │ • Documentation  │  │
+│  │ • Datasets   │  │              │  │ • Scripts        │  │
+│  └──────────────┘  └──────────────┘  └──────────────────┘  │
+│                                                               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Components
+
+- **ML Engine**: Model training, inference, and management
+- **Bot Suite**: Stripe-powered deployment and audit bots
+- **Infrastructure**: CI/CD, validation, and tooling
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js v16 or higher
+- npm v8 or higher
+- Git
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/SolanaRemix/SmartBrain.git
+cd SmartBrain
+
+# Install dependencies
+npm install
+
+# Run bootstrap script
+./scripts/bootstrap.sh
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+### Verify Installation
+
+```bash
+# Run audit script
+./scripts/audit.sh
+
+# Run tests
+npm test
+
+# Check linting
+npm run lint
+```
+
+---
+
+## 🤖 ML Pipeline
+
+### Model Lifecycle
+
+SmartBrain provides a complete ML model lifecycle:
+
+1. **Development**: Create and configure models
+2. **Training**: Train models with the training pipeline
+3. **Validation**: Validate model integrity and metadata
+4. **Registration**: Register models in the model registry
+5. **Deployment**: Deploy models for inference
+
+### Training a Model
+
+```bash
+# Generate training configuration
+node training/cli/index.js config --output training/configs/my-model.json
+
+# Train the model
+node training/cli/index.js train \
+  --config training/configs/my-model.json \
+  --output models/my-model \
+  --epochs 10
+
+# Validate the model
+./scripts/validate-model.sh models/my-model
+```
+
+### Running Inference
+
+```bash
+# Single prediction
+node inference/cli/index.js predict \
+  --model models/my-model \
+  --input data/input.json \
+  --output result.json
+
+# Batch inference
+node inference/cli/index.js batch \
+  --model models/my-model \
+  --input data/batch.json \
+  --output results.json \
+  --batch-size 32
+
+# Model information
+node inference/cli/index.js info --model models/my-model
+```
+
+### Model Versioning
+
+SmartBrain uses semantic versioning for models:
+
+```
+/models
+  /my-model
+    /1.0.0/
+      model.h5
+      metadata.json
+      README.md
+    /1.1.0/
+      model.h5
+      metadata.json
+      README.md
+```
+
+See [docs/index.md](docs/index.md) for complete ML documentation.
+
+---
+
+## 💬 SmartBrain Terminal Commands
+
+SmartBrain integrates with GitHub Copilot:
+
+```bash
+# Check system status
+/terminal SmartBrain.status
+
+# Validate models and configurations
+/terminal SmartBrain.validate
+
+# Run inference
+/terminal SmartBrain.inference --model my-model --input data.json
+
+# Train models
+/terminal SmartBrain.train --config training/configs/my-config.json
+
+# List models
+/terminal SmartBrain.models
+
+# Auto-fix issues
+/terminal SmartBrain.fix
+```
+
+See [.github/copilot/agent.yaml](.github/copilot/agent.yaml) for complete command reference.
+
+---
+
+## 🤖 Stripe-Powered Bots
+
+SmartBrain includes Stripe-powered plugin bots for smart contract deployment and auditing on blockchain platforms.
 
 ## 🤖 Available Bots
 
@@ -17,6 +210,72 @@ A powerful bot that automates smart contract deployment across multiple blockcha
 An automated smart contract auditing bot that performs security analysis, gas optimization recommendations, and vulnerability detection.
 
 [→ Full Documentation](./bots/SmartContractAudit/README.md)
+
+---
+
+## 🔧 Infrastructure & Scripts
+
+SmartBrain provides comprehensive infrastructure tooling:
+
+### Bootstrap Script
+
+Initialize the SmartBrain infrastructure:
+
+```bash
+./scripts/bootstrap.sh
+```
+
+Features:
+- ✅ Dependency checking (Node.js, npm)
+- ✅ Directory structure creation
+- ✅ Environment setup
+- ✅ Permission configuration
+- ✅ Validation checks
+
+### Audit Script
+
+Verify system integrity:
+
+```bash
+./scripts/audit.sh
+```
+
+Validates:
+- ✅ Directory structure
+- ✅ Required files
+- ✅ Documentation
+- ✅ Workflows
+- ✅ Dependencies
+- ✅ Configuration
+
+### Model Validation
+
+Validate model files and metadata:
+
+```bash
+./scripts/validate-model.sh models/my-model
+```
+
+Checks:
+- ✅ Model metadata format
+- ✅ Required fields
+- ✅ Model files
+- ✅ Documentation
+
+### Dataset Validation
+
+Validate dataset structure:
+
+```bash
+node datasets/validation/validate.js \
+  --dataset data/my-dataset.json \
+  --schema models/metadata/schema.json \
+  --verbose
+```
+
+---
+
+## 🤖 Bot Quick Start
 
 ## 🚀 Quick Start
 
@@ -763,20 +1022,47 @@ Special thanks to all contributors and the blockchain development community.
 
 ---
 
+## 📚 Documentation
+
+- **[Complete Documentation](docs/index.md)** - Full SmartBrain documentation
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute
+- **[Security Policy](SECURITY.md)** - Security guidelines
+- **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards
+- **[Bootstrap Report](BOOTSTRAP_REPORT.md)** - Infrastructure setup report
+- **[Feature Comparison](docs/COMPARISON.md)** - SmartBrain vs alternatives
+
+---
+
+## 🔐 Security
+
+Security is our top priority. SmartBrain implements:
+
+- 🔒 **CodeQL Analysis** - Automated security scanning
+- 🔒 **Dependency Review** - Vulnerability monitoring
+- 🔒 **Model Validation** - Integrity checks
+- 🔒 **Secret Scanning** - Credential detection
+- 🔒 **Best Practices** - Industry-standard security
+
+Report security issues: **security@smartbrain.dev**
+
+---
+
 ## 📞 Contact
 
 - **Email**: hello@smartbrain.dev
 - **Website**: https://smartbrain.dev (coming soon)
 - **GitHub**: [@SolanaRemix/SmartBrain](https://github.com/SolanaRemix/SmartBrain)
+- **Issues**: [GitHub Issues](https://github.com/SolanaRemix/SmartBrain/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/SolanaRemix/SmartBrain/discussions)
 
 ---
 
 <div align="center">
 
-**[@SmartBrain]** - Crypto-Native Smart Contract Automation
+**[@SmartBrain]** - AI/ML Engine & Smart Contract Automation
 
-🔒 Security | ⚡ Performance | 🌐 Multi-Chain | 💎 DeFi-Ready
+🧠 ML Pipeline | 🔒 Security | ⚡ Performance | 🌐 Multi-Chain | 💎 DeFi-Ready
 
-[Get Started](#-quick-start-for-crypto-developers) • [Documentation](docs/COMPARISON.md) • [Marketplace](https://github.com/marketplace)
+[Get Started](#-quick-start) • [ML Pipeline](#-ml-pipeline) • [Documentation](docs/index.md) • [Bots](#-stripe-powered-bots)
 
 </div>
