@@ -1,0 +1,70 @@
+# Configuration for PR labeler
+# See https://github.com/actions/labeler
+
+# Models
+models:
+  - changed-files:
+    - any-glob-to-any-file: 'models/**'
+
+# Inference
+inference:
+  - changed-files:
+    - any-glob-to-any-file: 'inference/**'
+
+# Training
+training:
+  - changed-files:
+    - any-glob-to-any-file: 'training/**'
+
+# Datasets
+datasets:
+  - changed-files:
+    - any-glob-to-any-file: 'datasets/**'
+
+# Documentation
+documentation:
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'docs/**'
+      - '*.md'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'SECURITY.md'
+      - 'CODE_OF_CONDUCT.md'
+
+# Tests
+tests:
+  - changed-files:
+    - any-glob-to-any-file: 'tests/**'
+
+# Scripts
+scripts:
+  - changed-files:
+    - any-glob-to-any-file: 'scripts/**'
+
+# Workflows
+workflows:
+  - changed-files:
+    - any-glob-to-any-file: '.github/workflows/**'
+
+# Dependencies
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'package.json'
+      - 'package-lock.json'
+
+# Bots
+bots:
+  - changed-files:
+    - any-glob-to-any-file: 'bots/**'
+
+# Configuration
+configuration:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.eslintrc.json'
+      - '.prettierrc'
+      - 'commitlint.config.js'
+      - '.editorconfig'
+      - '.github/**'

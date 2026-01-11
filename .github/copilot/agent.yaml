@@ -1,0 +1,107 @@
+name: SmartBrain
+description: AI/ML Engine for CyberAi Ecosystem
+version: 1.0.0
+
+commands:
+  - name: /terminal SmartBrain
+    description: SmartBrain main command - displays help and system status
+    endpoint: smartbrain.main
+    parameters: []
+
+  - name: /terminal SmartBrain.status
+    description: Check SmartBrain status - displays models, training jobs, and system health
+    endpoint: smartbrain.status
+    parameters: []
+
+  - name: /terminal SmartBrain.validate
+    description: Validate models and configurations - runs validation checks on all components
+    endpoint: smartbrain.validate
+    parameters:
+      - name: target
+        description: What to validate (models, datasets, configs, all)
+        type: string
+        required: false
+        default: "all"
+
+  - name: /terminal SmartBrain.inference
+    description: Run inference commands - execute model predictions
+    endpoint: smartbrain.inference
+    parameters:
+      - name: model
+        description: Path to the model directory
+        type: string
+        required: true
+      - name: input
+        description: Path to input data file (JSON)
+        type: string
+        required: true
+      - name: output
+        description: Path to save results (optional)
+        type: string
+        required: false
+
+  - name: /terminal SmartBrain.train
+    description: Run training commands - train ML models
+    endpoint: smartbrain.train
+    parameters:
+      - name: config
+        description: Path to training configuration file
+        type: string
+        required: true
+      - name: output
+        description: Path to save trained model
+        type: string
+        required: false
+      - name: epochs
+        description: Number of training epochs
+        type: integer
+        required: false
+
+  - name: /terminal SmartBrain.models
+    description: List and manage models - display registered models and their status
+    endpoint: smartbrain.models
+    parameters:
+      - name: action
+        description: Action to perform (list, info, validate)
+        type: string
+        required: false
+        default: "list"
+      - name: model
+        description: Model name for info/validate actions
+        type: string
+        required: false
+
+  - name: /terminal SmartBrain.fix
+    description: Auto-fix common issues - automatically fixes validation errors and configuration issues
+    endpoint: smartbrain.fix
+    parameters:
+      - name: target
+        description: What to fix (permissions, configs, all)
+        type: string
+        required: false
+        default: "all"
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  workflows: write
+
+features:
+  - model_management
+  - training_pipeline
+  - inference_engine
+  - dataset_validation
+  - auto_fix
+
+integration:
+  ecosystem: CyberAi
+  bots:
+    - SmartContractDeploy
+    - SmartContractAudit
+  workflows:
+    - ci
+    - lint
+    - model-validate
+    - model-lint
+    - codeql

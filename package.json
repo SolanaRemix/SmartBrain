@@ -1,24 +1,51 @@
 {
   "name": "smartbrain-bots",
   "version": "1.0.0",
-  "description": "Stripe-powered plugin bots for smart contract deployment and auditing",
+  "description": "AI/ML Engine and Stripe-powered plugin bots for smart contract deployment and auditing",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
     "deploy-bot": "node bots/SmartContractDeploy/index.js",
     "audit-bot": "node bots/SmartContractAudit/index.js",
-    "test": "echo \"No tests specified yet\" && exit 0"
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "test:unit": "echo \"Unit tests not yet implemented\" && exit 0",
+    "test:integration": "echo \"Integration tests not yet implemented\" && exit 0",
+    "test:coverage": "echo \"Coverage not yet implemented\" && exit 0",
+    "lint": "eslint . --ext .js --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .js --fix --ignore-path .gitignore",
+    "format": "prettier --write \"**/*.{js,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{js,json,md,yml,yaml}\"",
+    "build": "echo \"No build step required\" && exit 0",
+    "validate:models": "./scripts/validate-model.sh",
+    "validate:datasets": "node datasets/validation/validate.js",
+    "bootstrap": "./scripts/bootstrap.sh",
+    "audit:security": "./scripts/audit.sh",
+    "inference": "node inference/cli/index.js",
+    "train": "node training/cli/index.js"
   },
   "keywords": [
     "stripe",
     "smart-contracts",
     "blockchain",
     "bot",
-    "automation"
+    "automation",
+    "ai",
+    "ml",
+    "machine-learning",
+    "inference",
+    "training"
   ],
   "author": "SmartBrain Team",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SolanaRemix/SmartBrain.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SolanaRemix/SmartBrain/issues"
+  },
+  "homepage": "https://github.com/SolanaRemix/SmartBrain#readme",
   "dependencies": {
     "express": "^4.18.2",
     "stripe": "^14.10.0",
@@ -27,7 +54,13 @@
     "axios": "^1.6.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
+    "husky": "^8.0.3",
+    "semantic-release": "^22.0.12"
   },
   "engines": {
     "node": ">=16.0.0",

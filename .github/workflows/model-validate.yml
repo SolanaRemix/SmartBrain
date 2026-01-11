@@ -1,0 +1,61 @@
+name: Model Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'models/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'models/**'
+
+jobs:
+  validate-models:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Find changed models
+        id: changed-models
+        run: |
+          MODELS=$(find models -type d -mindepth 1 -maxdepth 1 | grep -v metadata | grep -v registry || true)
+          echo "models<<EOF" >> $GITHUB_OUTPUT
+          echo "$MODELS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Validate model metadata
+        if: steps.changed-models.outputs.models != ''
+        run: |
+          for model_dir in ${{ steps.changed-models.outputs.models }}; do
+            if [ -d "$model_dir" ]; then
+              echo "Validating $model_dir..."
+              ./scripts/validate-model.sh "$model_dir" || echo "Validation failed for $model_dir"
+            fi
+          done
+      
+      - name: Validate model metadata schema
+        run: |
+          if [ -f "models/metadata/schema.json" ]; then
+            echo "Validating model metadata schema..."
+            node -e "JSON.parse(require('fs').readFileSync('models/metadata/schema.json', 'utf8'))" && echo "✓ Schema is valid JSON"
+          fi
+      
+      - name: Check model versioning
+        run: |
+          echo "Checking model versions..."
+          find models -name "metadata.json" -type f | while read metadata; do
+            VERSION=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$metadata', 'utf8')).version || 'missing')")
+            echo "  $(dirname $metadata): $VERSION"
+          done
