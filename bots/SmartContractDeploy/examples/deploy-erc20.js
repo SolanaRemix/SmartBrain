@@ -1,6 +1,6 @@
 /**
  * Example 1: Deploy a simple ERC-20 token contract
- * 
+ *
  * This example demonstrates deploying a basic ERC-20 token
  * to Ethereum Sepolia testnet.
  */
@@ -59,7 +59,7 @@ async function deployERC20Token() {
       console.log('Gas Used:', response.data.gasUsed);
       console.log('Estimated Cost:', response.data.estimatedCost);
       console.log('Verification URL:', response.data.verificationUrl);
-      
+
       return response.data;
     } else {
       console.error('❌ Deployment failed:', response.data.message);
@@ -68,7 +68,7 @@ async function deployERC20Token() {
   } catch (error) {
     if (error.response) {
       console.error('❌ Error:', error.response.data.message);
-      
+
       if (error.response.data.error === 'SUBSCRIPTION_REQUIRED') {
         console.log('Subscribe at:', error.response.data.subscriptionUrl);
       }

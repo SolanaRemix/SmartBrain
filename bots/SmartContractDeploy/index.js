@@ -189,7 +189,7 @@ app.get('/api/deploy/info', (req, res) => {
       'solana-mainnet',
       'solana-devnet'
     ],
-    subscriptionUrl: `/subscribe/deploy`
+    subscriptionUrl: '/subscribe/deploy'
   });
 });
 

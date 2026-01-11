@@ -1,6 +1,6 @@
 /**
  * Example 1: Audit a smart contract for security vulnerabilities
- * 
+ *
  * This example demonstrates auditing a contract for common
  * security issues like reentrancy, overflow, and access control.
  */
@@ -73,9 +73,9 @@ async function auditContract() {
 
     if (response.data.success) {
       console.log('✅ Audit completed!\n');
-      
+
       const { summary, findings, gasOptimizations, score } = response.data;
-      
+
       console.log('=== AUDIT SUMMARY ===');
       console.log(`Overall Score: ${score}/10`);
       console.log(`Critical Issues: ${summary.critical}`);
@@ -112,7 +112,7 @@ async function auditContract() {
       console.log('\n=== REPORT ===');
       console.log(`Report URL: ${response.data.reportUrl}`);
       console.log(`Audit ID: ${response.data.auditId}`);
-      
+
       return response.data;
     } else {
       console.error('❌ Audit failed:', response.data.message);
@@ -121,7 +121,7 @@ async function auditContract() {
   } catch (error) {
     if (error.response) {
       console.error('❌ Error:', error.response.data.message);
-      
+
       if (error.response.data.error === 'SUBSCRIPTION_REQUIRED') {
         console.log('Subscribe at:', error.response.data.subscriptionUrl);
       }

@@ -2,9 +2,9 @@
 
 /**
  * Dataset Validation Script
- * 
+ *
  * Validates datasets against defined schemas and performs quality checks.
- * 
+ *
  * Usage:
  *   node datasets/validation/validate.js --dataset <path> --schema <path>
  */
@@ -50,7 +50,7 @@ function loadJSON(filePath) {
 // Validate dataset structure
 function validateStructure(dataset, schema) {
   const errors = [];
-  
+
   // Check if dataset is an array or object
   if (!Array.isArray(dataset) && typeof dataset !== 'object') {
     errors.push('Dataset must be an array or object');
@@ -60,7 +60,7 @@ function validateStructure(dataset, schema) {
   // If schema is provided, validate required fields
   if (schema && schema.required) {
     const items = Array.isArray(dataset) ? dataset : [dataset];
-    
+
     items.forEach((item, index) => {
       schema.required.forEach(field => {
         if (!(field in item)) {
@@ -77,7 +77,7 @@ function validateStructure(dataset, schema) {
 function checkMissingValues(dataset) {
   const warnings = [];
   const items = Array.isArray(dataset) ? dataset : [dataset];
-  
+
   items.forEach((item, index) => {
     Object.entries(item).forEach(([key, value]) => {
       if (value === null || value === undefined || value === '') {
@@ -92,7 +92,7 @@ function checkMissingValues(dataset) {
 // Calculate basic statistics
 function calculateStats(dataset) {
   const items = Array.isArray(dataset) ? dataset : [dataset];
-  
+
   return {
     totalRecords: items.length,
     fields: items.length > 0 ? Object.keys(items[0]).length : 0,
@@ -114,7 +114,7 @@ function validate(datasetPath, schemaPath, verbose) {
 
   // Load dataset
   const dataset = loadJSON(datasetPath);
-  
+
   // Load schema if provided
   let schema = null;
   if (schemaPath) {
@@ -152,7 +152,7 @@ function validate(datasetPath, schemaPath, verbose) {
     if (verbose) {
       missingWarnings.forEach(warn => console.log(`    - ${warn}`));
     } else {
-      console.log(`    (use --verbose to see details)`);
+      console.log('    (use --verbose to see details)');
     }
   }
   console.log('');

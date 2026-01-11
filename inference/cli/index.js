@@ -2,12 +2,12 @@
 
 /**
  * SmartBrain Inference CLI
- * 
+ *
  * Command-line interface for running model inference.
- * 
+ *
  * Usage:
  *   node inference/cli/index.js <command> [options]
- * 
+ *
  * Commands:
  *   predict     Run prediction on input data
  *   batch       Run batch inference
@@ -21,7 +21,7 @@ const path = require('path');
 // Parse command line arguments
 function parseArgs() {
   const args = process.argv.slice(2);
-  
+
   if (args.length === 0) {
     return { command: 'help' };
   }
@@ -34,7 +34,9 @@ function parseArgs() {
       const key = args[i].slice(2);
       const value = args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : true;
       options[key] = value;
-      if (value !== true) i++;
+      if (value !== true) {
+        i++;
+      }
     }
   }
 
@@ -71,7 +73,7 @@ function showHelp() {
 // Load model metadata
 function loadModelMetadata(modelPath) {
   const metadataPath = path.join(modelPath, 'metadata.json');
-  
+
   if (!fs.existsSync(metadataPath)) {
     throw new Error(`Model metadata not found at ${metadataPath}`);
   }
@@ -130,7 +132,7 @@ function batchInference(options) {
 
   const batchSize = parseInt(options['batch-size']) || 32;
   const metadata = loadModelMetadata(options.model);
-  
+
   console.log(`Model: ${metadata.name} v${metadata.version}`);
   console.log(`Batch size: ${batchSize}\n`);
 
@@ -150,7 +152,7 @@ function benchmark(options) {
 
   const iterations = parseInt(options.iterations) || 100;
   const metadata = loadModelMetadata(options.model);
-  
+
   console.log(`Model: ${metadata.name} v${metadata.version}`);
   console.log(`Iterations: ${iterations}\n`);
 
@@ -167,31 +169,31 @@ function showInfo(options) {
   }
 
   const metadata = loadModelMetadata(options.model);
-  
+
   console.log('========================================');
   console.log('  Model Information');
   console.log('========================================\n');
-  
+
   console.log(`Name:        ${metadata.name}`);
   console.log(`Version:     ${metadata.version}`);
   console.log(`Framework:   ${metadata.framework}`);
   console.log(`Task:        ${metadata.task}`);
-  
+
   if (metadata.description) {
     console.log(`Description: ${metadata.description}`);
   }
-  
+
   if (metadata.author) {
     console.log(`Author:      ${metadata.author}`);
   }
-  
+
   if (metadata.metrics) {
     console.log('\nMetrics:');
     Object.entries(metadata.metrics).forEach(([key, value]) => {
       console.log(`  ${key}: ${value}`);
     });
   }
-  
+
   console.log('');
 }
 
@@ -201,22 +203,22 @@ if (require.main === module) {
 
   try {
     switch (command) {
-      case 'predict':
-        predict(options);
-        break;
-      case 'batch':
-        batchInference(options);
-        break;
-      case 'benchmark':
-        benchmark(options);
-        break;
-      case 'info':
-        showInfo(options);
-        break;
-      case 'help':
-      default:
-        showHelp();
-        break;
+    case 'predict':
+      predict(options);
+      break;
+    case 'batch':
+      batchInference(options);
+      break;
+    case 'benchmark':
+      benchmark(options);
+      break;
+    case 'info':
+      showInfo(options);
+      break;
+    case 'help':
+    default:
+      showHelp();
+      break;
     }
   } catch (error) {
     console.error(`Error: ${error.message}`);

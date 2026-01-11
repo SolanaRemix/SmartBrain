@@ -99,8 +99,8 @@ router.post('/create-checkout-session', async (req, res) => {
       line_items: [
         {
           price: process.env.SMARTCONTRACT_AUDIT_PRICE_ID,
-          quantity: 1,
-        },
+          quantity: 1
+        }
       ],
       success_url: `${req.protocol}://${req.get('host')}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.protocol}://${req.get('host')}/cancel`,
@@ -143,7 +143,7 @@ router.post('/create-portal-session', async (req, res) => {
     }
 
     const sanitizedCustomerId = customerId.trim();
-    
+
     // Basic Stripe customer ID format check (e.g., "cus_XXXXXXXX")
     const customerIdPattern = /^cus_[A-Za-z0-9]+$/;
     if (!customerIdPattern.test(sanitizedCustomerId)) {
@@ -156,7 +156,7 @@ router.post('/create-portal-session', async (req, res) => {
 
     const session = await stripe.billingPortal.sessions.create({
       customer: sanitizedCustomerId,
-      return_url: `${req.protocol}://${req.get('host')}/dashboard`,
+      return_url: `${req.protocol}://${req.get('host')}/dashboard`
     });
 
     res.json({
@@ -195,36 +195,36 @@ router.post('/webhook', async (req, res) => {
 
   // Handle specific events
   switch (event.type) {
-    case 'customer.subscription.created':
-      console.log('New subscription created:', event.data.object.id);
-      // TODO: Store subscription data in database
-      // TODO: Send welcome email with API credentials
-      break;
+  case 'customer.subscription.created':
+    console.log('New subscription created:', event.data.object.id);
+    // TODO: Store subscription data in database
+    // TODO: Send welcome email with API credentials
+    break;
 
-    case 'customer.subscription.updated':
-      console.log('Subscription updated:', event.data.object.id);
-      // TODO: Update subscription status in database
-      break;
+  case 'customer.subscription.updated':
+    console.log('Subscription updated:', event.data.object.id);
+    // TODO: Update subscription status in database
+    break;
 
-    case 'customer.subscription.deleted':
-      console.log('Subscription cancelled:', event.data.object.id);
-      // TODO: Revoke API access
-      // TODO: Send cancellation confirmation email
-      break;
+  case 'customer.subscription.deleted':
+    console.log('Subscription cancelled:', event.data.object.id);
+    // TODO: Revoke API access
+    // TODO: Send cancellation confirmation email
+    break;
 
-    case 'invoice.payment_succeeded':
-      console.log('Payment succeeded:', event.data.object.id);
-      // TODO: Extend subscription period
-      break;
+  case 'invoice.payment_succeeded':
+    console.log('Payment succeeded:', event.data.object.id);
+    // TODO: Extend subscription period
+    break;
 
-    case 'invoice.payment_failed':
-      console.log('Payment failed:', event.data.object.id);
-      // TODO: Send payment failure notification
-      // TODO: Suspend access if multiple failures
-      break;
+  case 'invoice.payment_failed':
+    console.log('Payment failed:', event.data.object.id);
+    // TODO: Send payment failure notification
+    // TODO: Suspend access if multiple failures
+    break;
 
-    default:
-      console.log(`Unhandled event type: ${event.type}`);
+  default:
+    console.log(`Unhandled event type: ${event.type}`);
   }
 
   res.json({ received: true });

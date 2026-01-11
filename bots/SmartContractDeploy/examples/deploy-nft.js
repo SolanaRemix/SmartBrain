@@ -1,6 +1,6 @@
 /**
  * Example 2: Deploy an NFT (ERC-721) contract
- * 
+ *
  * This example shows how to deploy an NFT contract
  * with metadata URI configuration.
  */
@@ -71,10 +71,10 @@ async function deployNFTContract() {
       console.log('Transaction Hash:', response.data.transactionHash);
       console.log('Network:', response.data.network);
       console.log('Verification URL:', response.data.verificationUrl);
-      
+
       // Check deployment status
       await checkDeploymentStatus(response.data.deploymentId);
-      
+
       return response.data;
     }
 

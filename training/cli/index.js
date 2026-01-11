@@ -2,7 +2,7 @@
 
 /**
  * SmartBrain Training CLI
- * 
+ *
  * Command-line interface for training ML models.
  */
 
@@ -21,7 +21,9 @@ function parseArgs() {
       const key = args[i].slice(2);
       const value = args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : true;
       options[key] = value;
-      if (value !== true) i++;
+      if (value !== true) {
+        i++;
+      }
     }
   }
   return { command, options };
