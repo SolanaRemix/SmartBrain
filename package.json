@@ -17,7 +17,7 @@
     "format": "prettier --write \"**/*.{js,json,md,yml,yaml}\"",
     "format:check": "prettier --check \"**/*.{js,json,md,yml,yaml}\"",
     "build": "echo \"No build step required\" && exit 0",
-    "validate:models": "./scripts/validate-model.sh",
+    "validate:models": "find models -name 'metadata.json' -type f -execdir sh -c 'cd $(dirname {}) && ../../../../scripts/validate-model.sh $(pwd)' \\;",
     "validate:datasets": "node datasets/validation/validate.js",
     "bootstrap": "./scripts/bootstrap.sh",
     "audit:security": "./scripts/audit.sh",

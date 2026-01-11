@@ -78,8 +78,12 @@ function loadModelMetadata(modelPath) {
     throw new Error(`Model metadata not found at ${metadataPath}`);
   }
 
-  const content = fs.readFileSync(metadataPath, 'utf8');
-  return JSON.parse(content);
+  try {
+    const content = fs.readFileSync(metadataPath, 'utf8');
+    return JSON.parse(content);
+  } catch (error) {
+    throw new Error(`Failed to parse model metadata: ${error.message}`);
+  }
 }
 
 // Run prediction

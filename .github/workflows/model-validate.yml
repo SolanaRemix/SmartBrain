@@ -38,12 +38,17 @@ jobs:
       - name: Validate model metadata
         if: steps.changed-models.outputs.models != ''
         run: |
+          EXIT_CODE=0
           for model_dir in ${{ steps.changed-models.outputs.models }}; do
             if [ -d "$model_dir" ]; then
               echo "Validating $model_dir..."
-              ./scripts/validate-model.sh "$model_dir" || echo "Validation failed for $model_dir"
+              if ! ./scripts/validate-model.sh "$model_dir"; then
+                echo "Validation failed for $model_dir"
+                EXIT_CODE=1
+              fi
             fi
           done
+          exit $EXIT_CODE
       
       - name: Validate model metadata schema
         run: |

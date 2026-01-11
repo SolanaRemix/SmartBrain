@@ -42,8 +42,7 @@ function loadJSON(filePath) {
     const content = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(content);
   } catch (error) {
-    console.error(`Error loading ${filePath}: ${error.message}`);
-    process.exit(1);
+    throw new Error(`Failed to load ${filePath}: ${error.message}`);
   }
 }
 
