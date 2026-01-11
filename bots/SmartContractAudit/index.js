@@ -6,12 +6,21 @@ const { router: paymentRouter, requireActiveSubscription } = require('./payment'
 const app = express();
 const PORT = process.env.AUDIT_BOT_PORT || 3001;
 
-// Middleware
+// Mount webhook route BEFORE body parser to preserve raw body for signature verification
+app.use('/api/payment/audit/webhook', express.raw({ type: 'application/json' }), paymentRouter);
+
+// Middleware for all other routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Payment routes
-app.use('/api/payment/audit', paymentRouter);
+// Payment routes (excluding webhook which is already handled)
+app.use('/api/payment/audit', (req, res, next) => {
+  // Skip webhook route as it's already handled
+  if (req.path === '/webhook') {
+    return next('route');
+  }
+  next();
+}, paymentRouter);
 
 /**
  * Mock vulnerability database for demonstration

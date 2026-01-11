@@ -185,8 +185,9 @@ router.post('/create-portal-session', async (req, res) => {
 
 /**
  * Webhook handler for Stripe events
+ * Note: Raw body middleware is applied at app level before this route
  */
-router.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+router.post('/webhook', async (req, res) => {
   const sig = req.headers['stripe-signature'];
 
   let event;

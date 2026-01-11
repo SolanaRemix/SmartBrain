@@ -6,12 +6,21 @@ const { router: paymentRouter, requireActiveSubscription } = require('./payment'
 const app = express();
 const PORT = process.env.DEPLOY_BOT_PORT || 3000;
 
-// Middleware
+// Mount webhook route BEFORE body parser to preserve raw body for signature verification
+app.use('/api/payment/deploy/webhook', express.raw({ type: 'application/json' }), paymentRouter);
+
+// Middleware for all other routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Payment routes
-app.use('/api/payment/deploy', paymentRouter);
+// Payment routes (excluding webhook which is already mounted)
+app.use('/api/payment/deploy', (req, res, next) => {
+  // Skip webhook route as it's already handled
+  if (req.path === '/webhook') {
+    return next('route');
+  }
+  next();
+}, paymentRouter);
 
 /**
  * Deploy smart contract
