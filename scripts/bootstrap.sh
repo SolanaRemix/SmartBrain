@@ -25,6 +25,8 @@ if ! command -v node &> /dev/null; then
 fi
 
 NODE_VERSION=$(node -v | cut -d'v' -f2 | cut -d'.' -f1)
+# Note: This check uses simple integer comparison and requires standard version formats (e.g., 16.0.0)
+# Non-standard formats like "16.0.0-rc1" are not supported
 if [ "$NODE_VERSION" -lt 16 ]; then
     echo -e "${RED}Error: Node.js version must be >= 16.0.0${NC}"
     echo "Current version: $(node -v)"
