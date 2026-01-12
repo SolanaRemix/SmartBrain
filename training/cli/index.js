@@ -6,7 +6,6 @@
  * Command-line interface for training ML models.
  */
 
-const fs = require('fs');
 const path = require('path');
 
 function parseArgs() {
