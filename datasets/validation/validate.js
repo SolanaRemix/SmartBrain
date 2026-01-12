@@ -10,7 +10,6 @@
  */
 
 const fs = require('fs');
-const path = require('path');
 
 // Parse command line arguments
 function parseArgs() {
