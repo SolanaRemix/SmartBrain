@@ -10,7 +10,7 @@
     },
     "version": {
       "type": "string",
-      "description": "The version of the model (semver format)",
+      "description": "The version of the model (semver format). Only release versions are supported (e.g., 1.0.0). Pre-release versions (e.g., 1.0.0-beta.1) and build metadata (e.g., 1.0.0+20130313144700) are not supported.",
       "pattern": "^\\d+\\.\\d+\\.\\d+$"
     },
     "description": {

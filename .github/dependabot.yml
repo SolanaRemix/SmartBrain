@@ -20,10 +20,6 @@ updates:
     versioning-strategy: increase
     allow:
       - dependency-type: "all"
-    ignore:
-      # Ignore major version updates for stability
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"

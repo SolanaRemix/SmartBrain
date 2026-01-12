@@ -24,7 +24,7 @@ jobs:
         run: npm ci
       
       - name: Run ESLint
-        run: npm run lint
+        run: npm run lint -- --format json --output-file eslint-report.json || true
         continue-on-error: true
       
       - name: Annotate code with ESLint results

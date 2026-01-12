@@ -1049,11 +1049,12 @@ Report security issues: **security@smartbrain.dev**
 
 ## 📞 Contact
 
-- **Email**: hello@smartbrain.dev
-- **Website**: https://smartbrain.dev (coming soon)
-- **GitHub**: [@SolanaRemix/SmartBrain](https://github.com/SolanaRemix/SmartBrain)
+For questions, feedback, or support, please reach out via GitHub:
+
 - **Issues**: [GitHub Issues](https://github.com/SolanaRemix/SmartBrain/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/SolanaRemix/SmartBrain/discussions)
+- **Security**: [Security Advisories](https://github.com/SolanaRemix/SmartBrain/security/advisories)
+- **GitHub**: [@SolanaRemix/SmartBrain](https://github.com/SolanaRemix/SmartBrain)
 
 ---
 

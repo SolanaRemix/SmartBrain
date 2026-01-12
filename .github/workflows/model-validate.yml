@@ -30,24 +30,32 @@ jobs:
       - name: Find changed models
         id: changed-models
         run: |
-          MODELS=$(find models -type d -mindepth 1 -maxdepth 1 | grep -v metadata | grep -v registry || true)
-          echo "models<<EOF" >> $GITHUB_OUTPUT
-          echo "$MODELS" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          # Find model directories (excluding metadata and registry)
+          MODELS=$(find models -type d -mindepth 1 -maxdepth 1 2>/dev/null | grep -v metadata | grep -v registry || echo "")
+          # Store as JSON array for proper handling
+          if [ -n "$MODELS" ]; then
+            echo "has_models=true" >> $GITHUB_OUTPUT
+            echo "models<<EOF" >> $GITHUB_OUTPUT
+            echo "$MODELS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "has_models=false" >> $GITHUB_OUTPUT
+          fi
       
       - name: Validate model metadata
-        if: steps.changed-models.outputs.models != ''
+        if: steps.changed-models.outputs.has_models == 'true'
         run: |
           EXIT_CODE=0
-          for model_dir in ${{ steps.changed-models.outputs.models }}; do
-            if [ -d "$model_dir" ]; then
+          # Read models line by line to handle multi-line output
+          while IFS= read -r model_dir; do
+            if [ -n "$model_dir" ] && [ -d "$model_dir" ]; then
               echo "Validating $model_dir..."
               if ! ./scripts/validate-model.sh "$model_dir"; then
                 echo "Validation failed for $model_dir"
                 EXIT_CODE=1
               fi
             fi
-          done
+          done <<< "${{ steps.changed-models.outputs.models }}"
           exit $EXIT_CODE
       
       - name: Validate model metadata schema

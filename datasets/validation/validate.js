@@ -78,8 +78,17 @@ function checkMissingValues(dataset) {
 
   items.forEach((item, index) => {
     Object.entries(item).forEach(([key, value]) => {
+      // Check for various types of missing/placeholder values
       if (value === null || value === undefined || value === '') {
         warnings.push(`Missing or empty value for '${key}' at index ${index}`);
+      } else if (typeof value === 'string') {
+        const trimmed = value.trim();
+        // Check for common placeholder strings
+        if (trimmed === '' || trimmed.toLowerCase() === 'n/a' || 
+            trimmed.toLowerCase() === 'null' || trimmed.toLowerCase() === 'none' ||
+            trimmed === '-' || trimmed === '--') {
+          warnings.push(`Placeholder value for '${key}' at index ${index}: "${value}"`);
+        }
       }
     });
   });

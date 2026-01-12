@@ -136,9 +136,11 @@ SmartBrain follows security best practices aligned with:
 
 ## Contact
 
-For security concerns, contact: security@smartbrain.dev
+For security concerns, please use one of the following methods:
+- Open a [Security Advisory](https://github.com/SolanaRemix/SmartBrain/security/advisories/new) (preferred)
+- Email: security@smartbrain.dev (if configured)
 
-For general support: support@smartbrain.io
+For general support: [GitHub Issues](https://github.com/SolanaRemix/SmartBrain/issues)
 
 ## Acknowledgments
 

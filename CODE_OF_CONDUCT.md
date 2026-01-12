@@ -59,8 +59,9 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement at
-conduct@smartbrain.dev.
+reported to the community leaders responsible for enforcement via:
+- [GitHub Issues](https://github.com/SolanaRemix/SmartBrain/issues) (use "Code of Conduct" label)
+- [GitHub Security Advisory](https://github.com/SolanaRemix/SmartBrain/security/advisories/new) (for sensitive matters)
 
 All complaints will be reviewed and investigated promptly and fairly.
 

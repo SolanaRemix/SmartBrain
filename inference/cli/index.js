@@ -103,8 +103,18 @@ function predict(options) {
   console.log(`Task: ${metadata.task}\n`);
 
   // Load input data
-  const inputData = JSON.parse(fs.readFileSync(options.input, 'utf8'));
-  console.log('Input data loaded');
+  let inputData;
+  try {
+    const content = fs.readFileSync(options.input, 'utf8');
+    inputData = JSON.parse(content);
+    console.log('Input data loaded');
+  } catch (error) {
+    console.error(`Error loading input file: ${error.message}`);
+    if (error instanceof SyntaxError) {
+      console.error('The input file contains invalid JSON. Please check the file format.');
+    }
+    process.exit(1);
+  }
 
   // Placeholder for actual inference
   console.log('\n⚠ Note: Actual inference engine not yet implemented');

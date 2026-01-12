@@ -104,9 +104,23 @@ fi
 # Check for model files
 echo ""
 echo -e "${BLUE}Checking model files...${NC}"
-MODEL_FILES=$(find "$MODEL_PATH" -type f \( -name "*.h5" -o -name "*.pb" -o -name "*.pth" -o -name "*.pt" -o -name "*.onnx" -o -name "*.pkl" \) 2>/dev/null | wc -l)
-if [ "$MODEL_FILES" -gt 0 ]; then
-    check_pass "Found $MODEL_FILES model file(s)"
+MODEL_FILES=$(find "$MODEL_PATH" -type f \( -name "*.h5" -o -name "*.pb" -o -name "*.pth" -o -name "*.pt" -o -name "*.onnx" -o -name "*.pkl" \) 2>/dev/null)
+MODEL_COUNT=$(echo "$MODEL_FILES" | grep -c "^" 2>/dev/null || echo "0")
+
+if [ "$MODEL_COUNT" -gt 0 ]; then
+    check_pass "Found $MODEL_COUNT model file(s)"
+    
+    # Check that model files are not empty
+    while IFS= read -r model_file; do
+        if [ -n "$model_file" ] && [ -f "$model_file" ]; then
+            FILE_SIZE=$(stat -f%z "$model_file" 2>/dev/null || stat -c%s "$model_file" 2>/dev/null || echo "0")
+            if [ "$FILE_SIZE" -eq 0 ]; then
+                check_fail "Model file is empty: $(basename "$model_file")"
+            else
+                check_pass "Model file has content: $(basename "$model_file") (${FILE_SIZE} bytes)"
+            fi
+        fi
+    done <<< "$MODEL_FILES"
 else
     check_fail "No model files found (looking for .h5, .pb, .pth, .pt, .onnx, .pkl)"
 fi
