@@ -48,7 +48,7 @@
   "homepage": "https://github.com/SolanaRemix/SmartBrain#readme",
   "dependencies": {
     "express": "^5.2.1",
-    "stripe": "^14.10.0",
+    "stripe": "^20.2.0",
     "dotenv": "^16.3.1",
     "body-parser": "^1.20.2",
     "axios": "^1.6.2"
