@@ -1024,12 +1024,28 @@ Special thanks to all contributors and the blockchain development community.
 
 ## 📚 Documentation
 
-- **[Complete Documentation](docs/index.md)** - Full SmartBrain documentation
+### Core Documentation
+- **[Complete Documentation](docs/index.md)** - Full SmartBrain documentation with all features
+- **[Quick Start Guide](docs/index.md#quick-start-guide)** - Get started in 10 minutes
+- **[Features Quick Reference](docs/FEATURES.md)** - Quick reference to all features
+- **[Feature Comparison](docs/COMPARISON.md)** - SmartBrain vs alternatives (SunkBot, Dependabot)
+
+### Automation Features
+- **[Auto Sync](docs/index.md#auto-sync)** - Automated repository synchronization
+- **[Auto Test](docs/index.md#auto-test)** - Intelligent test execution
+- **[Auto Analysis](docs/index.md#auto-analysis)** - Continuous code and model analysis
+- **[Auto Fix](docs/index.md#auto-fix)** - Automated issue resolution
+
+### Integration & Operations
+- **[CI/CD Integration](docs/index.md#cicd-integration)** - GitHub Actions and more
+- **[Troubleshooting](docs/index.md#troubleshooting)** - Common issues and solutions
+- **[Performance Optimization](docs/index.md#performance-optimization)** - Speed and efficiency tips
+
+### Community & Contributing
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute
 - **[Security Policy](SECURITY.md)** - Security guidelines
 - **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards
 - **[Bootstrap Report](BOOTSTRAP_REPORT.md)** - Infrastructure setup report
-- **[Feature Comparison](docs/COMPARISON.md)** - SmartBrain vs alternatives
 
 ---
 

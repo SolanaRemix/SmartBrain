@@ -2,6 +2,12 @@
 
 Welcome to the SmartBrain documentation. This comprehensive guide covers all aspects of the SmartBrain AI/ML Engine for the CyberAi Ecosystem.
 
+**Quick Navigation:**
+- **New to SmartBrain?** Start with the [Quick Start Guide](#quick-start-guide)
+- **Looking for a specific feature?** Check the [Features Quick Reference](FEATURES.md)
+- **Comparing tools?** See [Feature Comparison](COMPARISON.md)
+- **Need help?** Visit [Troubleshooting](#troubleshooting) or [Support](#support-and-resources)
+
 ## Table of Contents
 
 ### Getting Started
@@ -3187,10 +3193,12 @@ Typical performance metrics:
 
 ## Support and Resources
 
-- **GitHub Issues**: Report bugs and request features
+- **[Features Quick Reference](FEATURES.md)**: Quick reference to all SmartBrain features
+- **GitHub Issues**: [Report bugs and request features](https://github.com/SolanaRemix/SmartBrain/issues)
+- **GitHub Discussions**: [Join community discussions](https://github.com/SolanaRemix/SmartBrain/discussions)
 - **Documentation**: This guide and inline code documentation
 - **Examples**: Check `/examples` directory for usage examples
-- **Community**: Join discussions on GitHub Discussions
+- **Feature Comparison**: [SmartBrain vs Alternatives](COMPARISON.md)
 
 ## Contributing
 
