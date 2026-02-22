@@ -82,7 +82,7 @@ function loadModelMetadata(modelPath) {
     const content = fs.readFileSync(metadataPath, 'utf8');
     return JSON.parse(content);
   } catch (error) {
-    throw new Error(`Failed to parse model metadata: ${error.message}`);
+    throw new Error(`Failed to parse model metadata: ${error.message}`, { cause: error });
   }
 }
 

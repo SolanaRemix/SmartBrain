@@ -41,7 +41,7 @@ function loadJSON(filePath) {
     const content = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(content);
   } catch (error) {
-    throw new Error(`Failed to load ${filePath}: ${error.message}`);
+    throw new Error(`Failed to load ${filePath}: ${error.message}`, { cause: error });
   }
 }
 
@@ -84,7 +84,7 @@ function checkMissingValues(dataset) {
       } else if (typeof value === 'string') {
         const trimmed = value.trim();
         // Check for common placeholder strings
-        if (trimmed === '' || trimmed.toLowerCase() === 'n/a' || 
+        if (trimmed === '' || trimmed.toLowerCase() === 'n/a' ||
             trimmed.toLowerCase() === 'null' || trimmed.toLowerCase() === 'none' ||
             trimmed === '-' || trimmed === '--') {
           warnings.push(`Placeholder value for '${key}' at index ${index}: "${value}"`);

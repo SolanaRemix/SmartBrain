@@ -217,6 +217,71 @@ An automated smart contract auditing bot that performs security analysis, gas op
 
 SmartBrain provides comprehensive infrastructure tooling:
 
+### New Features
+
+#### 🤖 Smart Functions (`src/smart-functions/`)
+
+AI helper modules for smart contract development:
+
+```javascript
+const { AutoAnalyzer, AutoFixer, AutoTestGenerator, SmartSuggest } = require('./src/smart-functions');
+
+// Analyze a contract
+const analyzer = new AutoAnalyzer();
+const result = analyzer.analyze(contractSource, 'MyContract');
+
+// Get AI-powered suggestions
+const suggestor = new SmartSuggest();
+const suggestions = suggestor.suggest(contractSource);
+
+// Generate tests from ABI
+const generator = new AutoTestGenerator();
+const tests = generator.generateTests(abi, 'MyContract');
+```
+
+```bash
+npm run smart:analyze
+```
+
+See [Smart Functions source](src/smart-functions/) for full API.
+
+---
+
+#### 🧠 Orval DB Virtual Memory (`src/orval-db/`)
+
+AI brain memory system for SmartBrain:
+
+```javascript
+const { createOrvalDb } = require('./src/orval-db');
+const { brain, persistence } = createOrvalDb();
+
+brain.learnPattern('reentrancy', { type: 'security', severity: 'high' });
+brain.recordAudit('audit-001', { contract: '0xABC', score: 85 });
+console.log(brain.status());
+```
+
+```bash
+npm run brain:status
+```
+
+See [Orval DB documentation](docs/ORVAL_DB.md) for full reference.
+
+---
+
+#### 📖 Self-Updating Documentation Engine (`src/docs-engine/`)
+
+Keeps documentation fresh by scanning the codebase:
+
+```bash
+npm run docs:scan    # Scan and report freshness scores
+npm run docs:update  # Alias for docs:scan
+```
+
+See [Self-Updating Docs guide](docs/SELF_UPDATING_DOCS.md) for configuration options.
+
+---
+
+
 ### Bootstrap Script
 
 Initialize the SmartBrain infrastructure:
@@ -1025,6 +1090,10 @@ Special thanks to all contributors and the blockchain development community.
 ## 📚 Documentation
 
 - **[Complete Documentation](docs/index.md)** - Full SmartBrain documentation
+- **[Troubleshooting Guide](docs/TROUBLESHOOTING.md)** - Common issues and quick fixes
+- **[FAQ](docs/FAQ.md)** - Frequently asked questions
+- **[Self-Updating Docs](docs/SELF_UPDATING_DOCS.md)** - Documentation engine guide
+- **[Orval DB](docs/ORVAL_DB.md)** - Virtual memory system documentation
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute
 - **[Security Policy](SECURITY.md)** - Security guidelines
 - **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards

@@ -15,6 +15,11 @@ Welcome to the SmartBrain documentation. This comprehensive guide covers all asp
 9. [Ecosystem Integration](#ecosystem-integration)
 10. [API Reference](#api-reference)
 11. [Best Practices](#best-practices)
+12. [Smart Functions](../src/smart-functions/index.js) — Auto-analyze, auto-fix, auto-test, auto-sync, smart-suggest
+13. [Orval DB Virtual Memory System](ORVAL_DB.md) — AI brain memory layer
+14. [Self-Updating Documentation](SELF_UPDATING_DOCS.md) — Docs engine and freshness scoring
+15. [Troubleshooting Guide](TROUBLESHOOTING.md) — Common issues and quick fixes
+16. [FAQ](FAQ.md) — Frequently asked questions
 
 ## Introduction
 

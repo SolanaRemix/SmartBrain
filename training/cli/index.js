@@ -6,8 +6,6 @@
  * Command-line interface for training ML models.
  */
 
-
-
 function parseArgs() {
   const args = process.argv.slice(2);
   if (args.length === 0) {
