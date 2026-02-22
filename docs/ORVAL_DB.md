@@ -52,12 +52,12 @@ Orval DB is SmartBrain's virtual in-memory database layer, providing AI brain me
 
 Orval DB organizes memory into the following internal namespaces:
 
-| Namespace | Contents |
-|-----------|----------|
-| `patterns` | Learned vulnerability and code patterns |
-| `contracts` | Registered contract metadata |
-| `audit-results` | Historical audit results |
-| `knowledge-graph` | Contract relationship graph |
+| Namespace         | Contents                                |
+| ----------------- | --------------------------------------- |
+| `patterns`        | Learned vulnerability and code patterns |
+| `contracts`       | Registered contract metadata            |
+| `audit-results`   | Historical audit results                |
+| `knowledge-graph` | Contract relationship graph             |
 
 ---
 
@@ -102,34 +102,34 @@ A namespace-aware, TTL-capable in-memory key-value store that extends `EventEmit
 const store = new MemoryStore(options);
 ```
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `defaultTtlMs` | `number` | `0` | Default TTL in milliseconds (0 = no expiry) |
+| Option         | Type     | Default | Description                                 |
+| -------------- | -------- | ------- | ------------------------------------------- |
+| `defaultTtlMs` | `number` | `0`     | Default TTL in milliseconds (0 = no expiry) |
 
 #### Methods
 
-| Method | Description |
-|--------|-------------|
-| `set(namespace, key, value, [ttlMs])` | Stores a value. Emits `'set'` or `'update'`. |
-| `get(namespace, key)` | Returns value or `undefined` if missing/expired. |
-| `has(namespace, key)` | Returns `true` if key exists and is not expired. |
-| `delete(namespace, key)` | Removes a key. Returns `true` if deleted. |
-| `keys(namespace)` | Returns all non-expired keys in a namespace. |
-| `clearNamespace(namespace)` | Removes all entries in a namespace. |
-| `stats()` | Returns operation counts and store size. |
-| `snapshot()` | Returns a serializable plain object of the store. |
-| `restore(snap)` | Restores store state from a snapshot. |
+| Method                                | Description                                       |
+| ------------------------------------- | ------------------------------------------------- |
+| `set(namespace, key, value, [ttlMs])` | Stores a value. Emits `'set'` or `'update'`.      |
+| `get(namespace, key)`                 | Returns value or `undefined` if missing/expired.  |
+| `has(namespace, key)`                 | Returns `true` if key exists and is not expired.  |
+| `delete(namespace, key)`              | Removes a key. Returns `true` if deleted.         |
+| `keys(namespace)`                     | Returns all non-expired keys in a namespace.      |
+| `clearNamespace(namespace)`           | Removes all entries in a namespace.               |
+| `stats()`                             | Returns operation counts and store size.          |
+| `snapshot()`                          | Returns a serializable plain object of the store. |
+| `restore(snap)`                       | Restores store state from a snapshot.             |
 
 #### Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `set` | `{ namespace, key, value }` | New key was set |
-| `update` | `{ namespace, key, value }` | Existing key was updated |
-| `delete` | `{ namespace, key }` | Key was deleted |
-| `expire` | `{ namespace, key }` | Key expired on access |
-| `clear` | `{ namespace }` | Namespace was cleared |
-| `restore` | `{ namespaces }` | Store was restored from snapshot |
+| Event     | Payload                     | Description                      |
+| --------- | --------------------------- | -------------------------------- |
+| `set`     | `{ namespace, key, value }` | New key was set                  |
+| `update`  | `{ namespace, key, value }` | Existing key was updated         |
+| `delete`  | `{ namespace, key }`        | Key was deleted                  |
+| `expire`  | `{ namespace, key }`        | Key expired on access            |
+| `clear`   | `{ namespace }`             | Namespace was cleared            |
+| `restore` | `{ namespaces }`            | Store was restored from snapshot |
 
 ---
 
@@ -145,27 +145,27 @@ The AI brain memory manager. Manages patterns, contracts, audits, and context-aw
 const brain = new VirtualBrain(options);
 ```
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `memoryDecayMs` | `number` | `0` | TTL for memories in ms (0 = no decay) |
-| `maxPatterns` | `number` | `1000` | Maximum number of patterns to store |
-| `store` | `MemoryStore` | new instance | Custom MemoryStore to use |
+| Option          | Type          | Default      | Description                           |
+| --------------- | ------------- | ------------ | ------------------------------------- |
+| `memoryDecayMs` | `number`      | `0`          | TTL for memories in ms (0 = no decay) |
+| `maxPatterns`   | `number`      | `1000`       | Maximum number of patterns to store   |
+| `store`         | `MemoryStore` | new instance | Custom MemoryStore to use             |
 
 #### Methods
 
-| Method | Description |
-|--------|-------------|
-| `learnPattern(patternId, patternData)` | Stores or merges a learned pattern |
-| `getPatterns()` | Returns all known patterns |
-| `registerContract(address, metadata)` | Records contract in the knowledge graph |
-| `getContract(address)` | Retrieves contract metadata |
-| `recordAudit(auditId, auditData)` | Records an audit result |
-| `getAuditHistory()` | Returns all audit results |
-| `retrieveRelevant(query, [limit])` | Returns most relevant memories for a query |
-| `consolidate()` | Merges related patterns; returns consolidation count |
-| `status()` | Returns a status summary object |
-| `snapshot()` | Serializes brain memory |
-| `restore(snap)` | Restores brain memory from snapshot |
+| Method                                 | Description                                          |
+| -------------------------------------- | ---------------------------------------------------- |
+| `learnPattern(patternId, patternData)` | Stores or merges a learned pattern                   |
+| `getPatterns()`                        | Returns all known patterns                           |
+| `registerContract(address, metadata)`  | Records contract in the knowledge graph              |
+| `getContract(address)`                 | Retrieves contract metadata                          |
+| `recordAudit(auditId, auditData)`      | Records an audit result                              |
+| `getAuditHistory()`                    | Returns all audit results                            |
+| `retrieveRelevant(query, [limit])`     | Returns most relevant memories for a query           |
+| `consolidate()`                        | Merges related patterns; returns consolidation count |
+| `status()`                             | Returns a status summary object                      |
+| `snapshot()`                           | Serializes brain memory                              |
+| `restore(snap)`                        | Restores brain memory from snapshot                  |
 
 ---
 
@@ -181,26 +181,26 @@ File-based persistence layer that saves/loads memory state and provides backup r
 const persistence = new Persistence(options);
 ```
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `filePath` | `string` | `orval-db.json` | Main persistence file |
-| `backupPath` | `string` | `orval-db.backup.json` | Backup file path |
-| `autoSaveIntervalMs` | `number` | `0` | Auto-save interval in ms (0 = disabled) |
+| Option               | Type     | Default                | Description                             |
+| -------------------- | -------- | ---------------------- | --------------------------------------- |
+| `filePath`           | `string` | `orval-db.json`        | Main persistence file                   |
+| `backupPath`         | `string` | `orval-db.backup.json` | Backup file path                        |
+| `autoSaveIntervalMs` | `number` | `0`                    | Auto-save interval in ms (0 = disabled) |
 
 #### Methods
 
-| Method | Description |
-|--------|-------------|
-| `save(snapshot)` | Saves snapshot to disk. Creates backup of previous file. |
-| `load()` | Loads snapshot. Falls back to backup on corruption. |
-| `startAutoSave(getSnapshotFn)` | Starts periodic auto-save. |
-| `stopAutoSave()` | Stops the auto-save timer. |
+| Method                         | Description                                              |
+| ------------------------------ | -------------------------------------------------------- |
+| `save(snapshot)`               | Saves snapshot to disk. Creates backup of previous file. |
+| `load()`                       | Loads snapshot. Falls back to backup on corruption.      |
+| `startAutoSave(getSnapshotFn)` | Starts periodic auto-save.                               |
+| `stopAutoSave()`               | Stops the auto-save timer.                               |
 
 #### Return Status Values
 
-| Status | Meaning |
-|--------|---------|
-| `ok` | Operation succeeded |
+| Status  | Meaning                                 |
+| ------- | --------------------------------------- |
+| `ok`    | Operation succeeded                     |
 | `empty` | No persistence file found (fresh start) |
 | `error` | Operation failed (see `metadata.error`) |
 
@@ -216,11 +216,11 @@ Factory function that creates a fully configured Orval DB instance.
 const { brain, persistence, store } = createOrvalDb(options);
 ```
 
-| Option key | Type | Description |
-|------------|------|-------------|
-| `store` | `object` | Options for MemoryStore |
-| `brain` | `object` | Options for VirtualBrain |
-| `persistence` | `object` | Options for Persistence |
+| Option key    | Type     | Description              |
+| ------------- | -------- | ------------------------ |
+| `store`       | `object` | Options for MemoryStore  |
+| `brain`       | `object` | Options for VirtualBrain |
+| `persistence` | `object` | Options for Persistence  |
 
 ---
 
@@ -299,13 +299,13 @@ console.log(`Consolidated ${reduced} redundant patterns`);
 
 ## Configuration Options
 
-| Setting | Where | Description |
-|---------|-------|-------------|
-| `memoryDecayMs` | VirtualBrain constructor | Set TTL for automatic memory expiry |
-| `maxPatterns` | VirtualBrain constructor | Cap the number of stored patterns |
-| `defaultTtlMs` | MemoryStore constructor | Default TTL for all entries |
-| `filePath` | Persistence constructor | Where to save the memory state |
-| `autoSaveIntervalMs` | Persistence constructor | How often to auto-save (ms) |
+| Setting              | Where                    | Description                         |
+| -------------------- | ------------------------ | ----------------------------------- |
+| `memoryDecayMs`      | VirtualBrain constructor | Set TTL for automatic memory expiry |
+| `maxPatterns`        | VirtualBrain constructor | Cap the number of stored patterns   |
+| `defaultTtlMs`       | MemoryStore constructor  | Default TTL for all entries         |
+| `filePath`           | Persistence constructor  | Where to save the memory state      |
+| `autoSaveIntervalMs` | Persistence constructor  | How often to auto-save (ms)         |
 
 ---
 
@@ -320,4 +320,4 @@ console.log(`Consolidated ${reduced} redundant patterns`);
 
 ---
 
-*See also: [Self-Updating Docs](SELF_UPDATING_DOCS.md) | [FAQ](FAQ.md) | [Troubleshooting](TROUBLESHOOTING.md)*
+_See also: [Self-Updating Docs](SELF_UPDATING_DOCS.md) | [FAQ](FAQ.md) | [Troubleshooting](TROUBLESHOOTING.md)_

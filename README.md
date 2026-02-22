@@ -198,6 +198,7 @@ SmartBrain includes Stripe-powered plugin bots for smart contract deployment and
 ## 🤖 Available Bots
 
 ### 1. @SmartContractDeploy Bot
+
 **Price:** $9/month subscription
 
 A powerful bot that automates smart contract deployment across multiple blockchain platforms with built-in best practices and security checks.
@@ -205,6 +206,7 @@ A powerful bot that automates smart contract deployment across multiple blockcha
 [→ Full Documentation](./bots/SmartContractDeploy/README.md)
 
 ### 2. @SmartContractAudit Bot
+
 **Price:** $4/month subscription
 
 An automated smart contract auditing bot that performs security analysis, gas optimization recommendations, and vulnerability detection.
@@ -224,7 +226,12 @@ SmartBrain provides comprehensive infrastructure tooling:
 AI helper modules for smart contract development:
 
 ```javascript
-const { AutoAnalyzer, AutoFixer, AutoTestGenerator, SmartSuggest } = require('./src/smart-functions');
+const {
+  AutoAnalyzer,
+  AutoFixer,
+  AutoTestGenerator,
+  SmartSuggest
+} = require('./src/smart-functions');
 
 // Analyze a contract
 const analyzer = new AutoAnalyzer();
@@ -281,7 +288,6 @@ See [Self-Updating Docs guide](docs/SELF_UPDATING_DOCS.md) for configuration opt
 
 ---
 
-
 ### Bootstrap Script
 
 Initialize the SmartBrain infrastructure:
@@ -291,6 +297,7 @@ Initialize the SmartBrain infrastructure:
 ```
 
 Features:
+
 - ✅ Dependency checking (Node.js, npm)
 - ✅ Directory structure creation
 - ✅ Environment setup
@@ -306,6 +313,7 @@ Verify system integrity:
 ```
 
 Validates:
+
 - ✅ Directory structure
 - ✅ Required files
 - ✅ Documentation
@@ -322,6 +330,7 @@ Validate model files and metadata:
 ```
 
 Checks:
+
 - ✅ Model metadata format
 - ✅ Required fields
 - ✅ Model files
@@ -354,21 +363,24 @@ node datasets/validation/validate.js \
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/SolanaRemix/SmartBrain.git
    cd SmartBrain
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Configure environment variables:**
+
    ```bash
    cp .env.example .env
    ```
-   
+
    Edit `.env` and add your Stripe API keys and other configuration values.
 
 4. **Set up Stripe products:**
@@ -387,17 +399,20 @@ node datasets/validation/validate.js \
 ### Running the Bots
 
 **Start all bots:**
+
 ```bash
 npm start
 ```
 
 **Run specific bot:**
+
 ```bash
 npm run deploy-bot    # SmartContractDeploy bot
 npm run audit-bot      # SmartContractAudit bot
 ```
 
 **Development mode with auto-reload:**
+
 ```bash
 npm run dev
 ```
@@ -407,6 +422,7 @@ npm run dev
 See [.env.example](./.env.example) for all required environment variables.
 
 Key variables:
+
 - `STRIPE_SECRET_KEY` - Your Stripe secret API key
 - `STRIPE_PUBLISHABLE_KEY` - Your Stripe publishable API key
 - `STRIPE_WEBHOOK_SECRET` - Webhook signing secret from Stripe
@@ -481,22 +497,28 @@ SmartBrain/
 ## 🔗 Integration Examples
 
 ### REST API Integration
+
 ```javascript
 const axios = require('axios');
 
 // Deploy a smart contract
-const response = await axios.post('http://localhost:3000/api/deploy', {
-  userId: 'user_123',
-  contract: contractCode,
-  network: 'ethereum-mainnet'
-}, {
-  headers: {
-    'Authorization': 'Bearer YOUR_API_KEY'
+const response = await axios.post(
+  'http://localhost:3000/api/deploy',
+  {
+    userId: 'user_123',
+    contract: contractCode,
+    network: 'ethereum-mainnet'
+  },
+  {
+    headers: {
+      Authorization: 'Bearer YOUR_API_KEY'
+    }
   }
-});
+);
 ```
 
 ### GitHub Bot Integration
+
 Comment `@SmartContractDeploy` or `@SmartContractAudit` on a pull request to trigger bot actions.
 
 ## 🧪 Testing
@@ -526,6 +548,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - Subscriptions are managed entirely through Stripe
 - No refunds for partial months (Stripe standard policy)
 - Free trial available for 14 days (configure in Stripe)
+
 # 🧠 SmartBrain (@SmartBrain)
 
 > **Crypto-Native Smart Contract Automation Platform**  
@@ -544,13 +567,13 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### 🚀 Why @SmartBrain?
 
-| Feature | @SmartBrain | Traditional Bots |
-|---------|-------------|------------------|
-| 🔒 Smart Contract Auditing | ✅ Automated | ❌ Manual |
-| ⚡ Gas Optimization | ✅ Real-time | ❌ None |
-| 🌐 Multi-Chain Deployment | ✅ One-click | ⚙️ Complex |
-| 💎 Crypto-Specific Security | ✅ Built-in | ❌ Generic |
-| 📊 DeFi Protocol Support | ✅ Native | ❌ Limited |
+| Feature                     | @SmartBrain  | Traditional Bots |
+| --------------------------- | ------------ | ---------------- |
+| 🔒 Smart Contract Auditing  | ✅ Automated | ❌ Manual        |
+| ⚡ Gas Optimization         | ✅ Real-time | ❌ None          |
+| 🌐 Multi-Chain Deployment   | ✅ One-click | ⚙️ Complex       |
+| 💎 Crypto-Specific Security | ✅ Built-in  | ❌ Generic       |
+| 📊 DeFi Protocol Support    | ✅ Native    | ❌ Limited       |
 
 ---
 
@@ -587,18 +610,21 @@ Deploy and manage contracts across multiple blockchains:
 ### 🤖 Three Specialized Bots
 
 #### 1. **@SmartBrain** - Main Automation Bot
+
 - Code review and analysis
 - Dependency management
 - CI/CD integration
 - Community notifications
 
 #### 2. **@SmartContractsAudit** - Security Auditor
+
 - Continuous security scanning
 - Vulnerability reporting
 - Compliance checking
 - Audit trail generation
 
 #### 3. **@SmartContractDeploy** - Deployment Manager
+
 - Multi-chain deployment
 - Contract verification (Etherscan, etc.)
 - Testnet simulation
@@ -663,6 +689,7 @@ chmod +x sync_deploy.sh
 ```
 
 This will:
+
 - ✅ Create modular repositories (Core, Contracts, Docs)
 - ✅ Deploy all three bots (@SmartBrain, @SmartContractsAudit, @SmartContractDeploy)
 - ✅ Configure GitHub Marketplace integration
@@ -716,7 +743,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Run Smart Contract Audit
         uses: smartbrain/audit-action@v1
         with:
@@ -729,20 +756,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Analyze Gas Usage
         uses: smartbrain/gas-action@v1
         with:
           framework: hardhat
           network: ethereum
-          
+
   smartbrain-deploy:
     name: Deploy to Testnet (@SmartContractDeploy)
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Deploy to Testnet
         uses: smartbrain/deploy-action@v1
         with:
@@ -827,13 +854,13 @@ Not sure if @SmartBrain is right for you? See our detailed comparison:
 
 Quick summary for crypto developers:
 
-| Category | @SmartBrain | Others |
-|----------|-------------|--------|
-| Smart Contract Security | 🏆 Best-in-class | ⚠️ Generic |
-| Gas Optimization | 🏆 Automated | ❌ None |
-| Multi-Chain Support | 🏆 Native | ❌ Manual |
-| DeFi Protocol Tools | 🏆 Specialized | ⚠️ Limited |
-| Cost Savings | 🏆 $15K+ per audit | 💸 High |
+| Category                | @SmartBrain        | Others     |
+| ----------------------- | ------------------ | ---------- |
+| Smart Contract Security | 🏆 Best-in-class   | ⚠️ Generic |
+| Gas Optimization        | 🏆 Automated       | ❌ None    |
+| Multi-Chain Support     | 🏆 Native          | ❌ Manual  |
+| DeFi Protocol Tools     | 🏆 Specialized     | ⚠️ Limited |
+| Cost Savings            | 🏆 $15K+ per audit | 💸 High    |
 
 ---
 
@@ -894,14 +921,14 @@ Developer Commits Code
 
 ### Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `GITHUB_TOKEN` | ✅ Yes | GitHub Personal Access Token |
-| `STRIPE_SECRET_KEY` | 🟡 Optional | For payment integration |
-| `INFURA_KEY` | 🟡 Optional | For Ethereum deployments |
-| `ALCHEMY_KEY` | 🟡 Optional | Alternative RPC provider |
-| `SOLANA_RPC_URL` | 🟡 Optional | For Solana deployments |
-| `PRIVATE_KEY` | 🟡 Optional | Deployer wallet (secure!) |
+| Variable            | Required    | Description                  |
+| ------------------- | ----------- | ---------------------------- |
+| `GITHUB_TOKEN`      | ✅ Yes      | GitHub Personal Access Token |
+| `STRIPE_SECRET_KEY` | 🟡 Optional | For payment integration      |
+| `INFURA_KEY`        | 🟡 Optional | For Ethereum deployments     |
+| `ALCHEMY_KEY`       | 🟡 Optional | Alternative RPC provider     |
+| `SOLANA_RPC_URL`    | 🟡 Optional | For Solana deployments       |
+| `PRIVATE_KEY`       | 🟡 Optional | Deployer wallet (secure!)    |
 
 ### Creating GitHub Token
 
@@ -919,12 +946,14 @@ Developer Commits Code
 ## 💰 Pricing & Plans (@SmartBrain)
 
 ### Free Tier
+
 - ✅ Open-source projects (unlimited)
 - ✅ Basic security scanning
 - ✅ Community support
 - ✅ GitHub Actions integration
 
 ### Pro Tier ($49/month)
+
 - ✅ Everything in Free
 - ✅ Private repositories
 - ✅ Advanced security audits
@@ -933,6 +962,7 @@ Developer Commits Code
 - ✅ Priority support
 
 ### Enterprise (Custom Pricing)
+
 - ✅ Everything in Pro
 - ✅ Custom integrations
 - ✅ Dedicated support
@@ -1017,24 +1047,28 @@ Do NOT open public issues for security vulnerabilities.
 ## 🎯 Roadmap
 
 ### Q1 2025
+
 - ✅ Core automation engine
 - ✅ Basic security auditing
 - ✅ Multi-chain deployment
 - 🔄 GitHub Marketplace launch
 
 ### Q2 2025
+
 - 🔄 Advanced gas optimization
 - 🔄 Additional blockchain support
 - 🔄 Discord/Telegram integration
 - 📅 Crypto payment options (USDC/ETH)
 
 ### Q3 2025
+
 - 📅 AI-powered audit suggestions
 - 📅 Cross-chain bridge support
 - 📅 Advanced analytics dashboard
 - 📅 Mobile app for monitoring
 
 ### Q4 2025
+
 - 📅 Enterprise features
 - 📅 Custom rule engine
 - 📅 White-label solutions
@@ -1078,6 +1112,7 @@ limitations under the License.
 ## 🙏 Acknowledgments
 
 Built with ❤️ for the crypto community by developers who understand:
+
 - The cost of security breaches
 - The importance of gas optimization
 - The complexity of multi-chain development

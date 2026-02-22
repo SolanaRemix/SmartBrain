@@ -46,7 +46,7 @@ async function deployERC20Token() {
       },
       {
         headers: {
-          'Authorization': `Bearer ${API_KEY}`,
+          Authorization: `Bearer ${API_KEY}`,
           'Content-Type': 'application/json'
         }
       }
@@ -64,7 +64,6 @@ async function deployERC20Token() {
     } else {
       console.error('❌ Deployment failed:', response.data.message);
     }
-
   } catch (error) {
     if (error.response) {
       console.error('❌ Error:', error.response.data.message);

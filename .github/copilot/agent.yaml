@@ -21,7 +21,7 @@ commands:
         description: What to validate (models, datasets, configs, all)
         type: string
         required: false
-        default: "all"
+        default: 'all'
 
   - name: /terminal SmartBrain.inference
     description: Run inference commands - execute model predictions
@@ -65,7 +65,7 @@ commands:
         description: Action to perform (list, info, validate)
         type: string
         required: false
-        default: "list"
+        default: 'list'
       - name: model
         description: Model name for info/validate actions
         type: string
@@ -79,7 +79,7 @@ commands:
         description: What to fix (permissions, configs, all)
         type: string
         required: false
-        default: "all"
+        default: 'all'
 
 permissions:
   contents: write

@@ -84,9 +84,14 @@ function checkMissingValues(dataset) {
       } else if (typeof value === 'string') {
         const trimmed = value.trim();
         // Check for common placeholder strings
-        if (trimmed === '' || trimmed.toLowerCase() === 'n/a' ||
-            trimmed.toLowerCase() === 'null' || trimmed.toLowerCase() === 'none' ||
-            trimmed === '-' || trimmed === '--') {
+        if (
+          trimmed === '' ||
+          trimmed.toLowerCase() === 'n/a' ||
+          trimmed.toLowerCase() === 'null' ||
+          trimmed.toLowerCase() === 'none' ||
+          trimmed === '-' ||
+          trimmed === '--'
+        ) {
           warnings.push(`Placeholder value for '${key}' at index ${index}: "${value}"`);
         }
       }
@@ -188,7 +193,9 @@ if (require.main === module) {
   if (!config.dataset) {
     console.error('Error: --dataset argument is required');
     console.log('\nUsage:');
-    console.log('  node datasets/validation/validate.js --dataset <path> [--schema <path>] [--verbose]');
+    console.log(
+      '  node datasets/validation/validate.js --dataset <path> [--schema <path>] [--verbose]'
+    );
     console.log('\nExample:');
     console.log('  node datasets/validation/validate.js --dataset data.json --schema schema.json');
     process.exit(1);

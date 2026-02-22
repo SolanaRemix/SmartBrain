@@ -12,6 +12,7 @@ This directory contains ML helper utilities and development tools for SmartBrain
 ## Overview
 
 The tools directory provides:
+
 - ML-specific helper utilities
 - Data processing tools
 - Model evaluation tools
@@ -21,6 +22,7 @@ The tools directory provides:
 ## ML Helpers
 
 The ml-helpers subdirectory contains:
+
 - Data preprocessing utilities
 - Feature engineering tools
 - Model evaluation helpers
@@ -29,6 +31,7 @@ The ml-helpers subdirectory contains:
 - Debugging utilities
 
 Example utilities:
+
 - Data normalization
 - Feature scaling
 - Confusion matrix generation
@@ -39,6 +42,7 @@ Example utilities:
 ## Usage
 
 Import ML helpers:
+
 ```javascript
 const { normalizeData } = require('./tools/ml-helpers/preprocessing');
 const { calculateMetrics } = require('./tools/ml-helpers/metrics');
@@ -47,24 +51,28 @@ const { calculateMetrics } = require('./tools/ml-helpers/metrics');
 ## Available Tools
 
 ### Data Processing
+
 - Data cleaning
 - Normalization/standardization
 - Feature extraction
 - Data augmentation
 
 ### Model Evaluation
+
 - Metrics calculation (accuracy, precision, recall, F1)
 - Confusion matrix
 - ROC/AUC analysis
 - Cross-validation helpers
 
 ### Visualization
+
 - Training curves
 - Model performance plots
 - Data distribution plots
 - Feature importance charts
 
 ### Debugging
+
 - Model inspection
 - Activation visualization
 - Gradient checking
@@ -82,6 +90,7 @@ const { calculateMetrics } = require('./tools/ml-helpers/metrics');
 ## Integration
 
 Tools integrate with:
+
 - Training pipeline (`/training`)
 - Inference engine (`/inference`)
 - Dataset validation (`/datasets`)

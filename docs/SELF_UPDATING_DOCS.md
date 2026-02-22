@@ -56,12 +56,12 @@ Create a `docs-engine.config.json` file at the project root to customize behavio
 
 ### Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `includeDirs` | `string[]` | `["src","bots","docs"]` | Directories to scan |
-| `docExtensions` | `string[]` | `[".md"]` | File extensions treated as documentation |
-| `codeExtensions` | `string[]` | `[".js"]` | File extensions treated as source code |
-| `stalenessThresholdDays` | `number` | `30` | Days before a doc is considered stale |
+| Option                   | Type       | Default                 | Description                              |
+| ------------------------ | ---------- | ----------------------- | ---------------------------------------- |
+| `includeDirs`            | `string[]` | `["src","bots","docs"]` | Directories to scan                      |
+| `docExtensions`          | `string[]` | `[".md"]`               | File extensions treated as documentation |
+| `codeExtensions`         | `string[]` | `[".js"]`               | File extensions treated as source code   |
+| `stalenessThresholdDays` | `number`   | `30`                    | Days before a doc is considered stale    |
 
 ---
 
@@ -165,11 +165,11 @@ The freshness score (0–100) is calculated as:
 score = max(0, 100 - (ageDays / stalenessThresholdDays) * 100)
 ```
 
-| Score Range | Status | Icon |
-|-------------|--------|------|
-| 70–100 | Up to date | ✅ |
-| 40–69 | Getting stale | ⚠️ |
-| 0–39 | Stale — needs update | ❌ |
+| Score Range | Status               | Icon |
+| ----------- | -------------------- | ---- |
+| 70–100      | Up to date           | ✅   |
+| 40–69       | Getting stale        | ⚠️   |
+| 0–39        | Stale — needs update | ❌   |
 
 ---
 
@@ -208,4 +208,4 @@ Use `continue-on-error: true` to treat documentation staleness as a warning rath
 
 ---
 
-*See also: [FAQ](FAQ.md) | [Troubleshooting](TROUBLESHOOTING.md) | [Orval DB](ORVAL_DB.md)*
+_See also: [FAQ](FAQ.md) | [Troubleshooting](TROUBLESHOOTING.md) | [Orval DB](ORVAL_DB.md)_

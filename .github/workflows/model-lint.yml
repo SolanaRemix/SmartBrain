@@ -2,13 +2,13 @@ name: Model Lint
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
     paths:
       - 'models/**'
       - 'training/configs/**'
       - 'datasets/**'
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
       - 'models/**'
       - 'training/configs/**'
@@ -17,20 +17,20 @@ on:
 jobs:
   lint-configs:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20.x'
-      
+
       - name: Validate JSON files
         run: |
           echo "Validating JSON configuration files..."
-          
+
           # Validate model metadata files
           find models -name "*.json" -type f | while read jsonfile; do
             echo "Checking $jsonfile..."
@@ -41,7 +41,7 @@ jobs:
               exit 1
             fi
           done
-          
+
           # Validate training configs
           find training/configs -name "*.json" -type f 2>/dev/null | while read jsonfile; do
             echo "Checking $jsonfile..."
@@ -52,13 +52,13 @@ jobs:
               exit 1
             fi
           done || true
-          
+
           echo "JSON validation complete!"
-      
+
       - name: Validate dataset schemas
         run: |
           echo "Validating dataset files..."
-          
+
           find datasets -name "*.json" -type f | while read dataset; do
             echo "Checking $dataset..."
             if node -e "JSON.parse(require('fs').readFileSync('$dataset', 'utf8'))"; then
@@ -68,13 +68,13 @@ jobs:
               exit 1
             fi
           done || true
-          
+
           echo "Dataset validation complete!"
-      
+
       - name: Check for required metadata fields
         run: |
           echo "Checking required metadata fields..."
-          
+
           find models -name "metadata.json" -type f | while read metadata; do
             echo "Checking $metadata..."
             MISSING_FIELDS=""

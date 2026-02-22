@@ -13,6 +13,7 @@ This directory contains the core logic and utilities for SmartBrain.
 ## Overview
 
 The src directory provides:
+
 - Core SmartBrain functionality
 - Reusable utility functions
 - Common helpers
@@ -21,6 +22,7 @@ The src directory provides:
 ## Core
 
 The core subdirectory contains:
+
 - Main application logic
 - Business rules
 - Domain models
@@ -30,6 +32,7 @@ The core subdirectory contains:
 ## Utils
 
 The utils subdirectory contains:
+
 - File I/O utilities
 - Data transformation helpers
 - Logging utilities
@@ -49,6 +52,7 @@ The utils subdirectory contains:
 ## Usage
 
 Import core functionality:
+
 ```javascript
 const { ModelManager } = require('./src/core/model-manager');
 const { validateInput } = require('./src/utils/validators');
@@ -57,6 +61,7 @@ const { validateInput } = require('./src/utils/validators');
 ## Integration
 
 Source code integrates with:
+
 - Bots (`/bots`)
 - Models (`/models`)
 - Inference (`/inference`)

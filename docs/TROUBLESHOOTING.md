@@ -28,6 +28,7 @@ This guide covers common issues and how to resolve them when working with the Sm
 **Cause:** SmartBrain requires Node.js **v16 or higher**.
 
 **Fix:**
+
 ```bash
 # Check your current Node.js version
 node --version
@@ -46,6 +47,7 @@ nvm use 20
 **Symptom:** `npm ERR! peer dep missing` or `npm ERR! ERESOLVE`.
 
 **Fix:**
+
 ```bash
 # Clear npm cache and retry
 npm cache clean --force
@@ -63,11 +65,13 @@ npm install --legacy-peer-deps
 **Symptom:** `Cannot find module 'express'` or similar at runtime.
 
 **Fix:**
+
 ```bash
 npm install
 ```
 
 If specific packages are missing after install, reinstall them explicitly:
+
 ```bash
 npm install express stripe dotenv body-parser axios
 ```
@@ -81,6 +85,7 @@ npm install express stripe dotenv body-parser axios
 **Symptom:** `Error: Stripe API key not configured` or `401 Unauthorized` from Stripe.
 
 **Fix:**
+
 ```bash
 # Copy the example environment file
 cp .env.example .env
@@ -100,6 +105,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 **Symptom:** `Error: Bad credentials` or `401` when calling GitHub API.
 
 **Fix:**
+
 ```bash
 export GITHUB_TOKEN="ghp_your_token_here"
 # Or add to .env:
@@ -107,6 +113,7 @@ GITHUB_TOKEN=ghp_your_token_here
 ```
 
 Required token scopes:
+
 - `repo` (full control of private repositories)
 - `admin:repo_hook` (webhook management)
 - `workflow` (update GitHub Actions)
@@ -118,6 +125,7 @@ Required token scopes:
 **Symptom:** `Error: Invalid JSON-RPC response` or connection timeouts on blockchain calls.
 
 **Fix:**
+
 ```bash
 # Ethereum
 INFURA_KEY=your_infura_project_id
@@ -137,6 +145,7 @@ SOLANA_RPC_URL=https://api.devnet.solana.com
 **Symptom:** Environment variables are undefined even though `.env` exists.
 
 **Fix:** Ensure your entry point calls `require('dotenv').config()` at the very top:
+
 ```javascript
 require('dotenv').config();
 // ... rest of the file
@@ -151,20 +160,22 @@ require('dotenv').config();
 **Symptom:** `npm run lint` fails with rule violations.
 
 **Diagnostic:**
+
 ```bash
 npm run lint
 ```
 
 **Common fixes:**
 
-| Error | Fix |
-|-------|-----|
-| `Expected indentation of 2 spaces` | Use 2-space indentation |
-| `Strings must use singlequote` | Replace `"..."` with `'...'` |
-| `Missing semicolon` | Add `;` at end of statements |
-| `Unexpected var, use let/const` | Replace `var` with `const` or `let` |
+| Error                              | Fix                                 |
+| ---------------------------------- | ----------------------------------- |
+| `Expected indentation of 2 spaces` | Use 2-space indentation             |
+| `Strings must use singlequote`     | Replace `"..."` with `'...'`        |
+| `Missing semicolon`                | Add `;` at end of statements        |
+| `Unexpected var, use let/const`    | Replace `var` with `const` or `let` |
 
 **Auto-fix:**
+
 ```bash
 npm run lint:fix
 ```
@@ -176,6 +187,7 @@ npm run lint:fix
 **Symptom:** CI fails with `Formatting issues found`.
 
 **Fix:**
+
 ```bash
 npm run format
 ```
@@ -187,11 +199,13 @@ npm run format
 **Symptom:** CI pipeline fails at the `Run tests` step.
 
 **Diagnostic:**
+
 ```bash
 npm test
 ```
 
 **Common causes:**
+
 - Missing test dependencies
 - Hardcoded file paths that differ between environments
 - Time-sensitive tests that are flaky
@@ -203,11 +217,13 @@ npm test
 **Symptom:** GitHub Actions workflow fails with `Process completed with exit code 1`.
 
 **Steps to diagnose:**
+
 1. Click on the failed workflow run in the Actions tab
 2. Expand the failed step to see full output
 3. Check for environment-specific issues (missing secrets, wrong Node version)
 
 **Common fixes:**
+
 - Ensure all required secrets are set in GitHub repository settings
 - Verify the workflow is using a supported Node.js version (16, 18, or 20)
 
@@ -220,6 +236,7 @@ npm test
 **Symptom:** Bot returns `403 Forbidden: Active subscription required`.
 
 **Fix:**
+
 1. Verify your Stripe subscription is active in the [Stripe Dashboard](https://dashboard.stripe.com)
 2. Ensure the webhook endpoint is configured and receiving events
 3. Check that `customer.subscription.created` event was processed
@@ -231,6 +248,7 @@ npm test
 **Symptom:** `Error: No signatures found matching the expected signature for payload`.
 
 **Fix:**
+
 ```bash
 # Verify the webhook secret matches what's in Stripe Dashboard
 # Developers → Webhooks → Your endpoint → Signing secret
@@ -238,6 +256,7 @@ STRIPE_WEBHOOK_SECRET=whsec_correct_secret_here
 ```
 
 **Important:** The webhook route must receive the raw request body (before JSON parsing):
+
 ```javascript
 app.use('/webhook', express.raw({ type: 'application/json' }), webhookHandler);
 ```
@@ -249,6 +268,7 @@ app.use('/webhook', express.raw({ type: 'application/json' }), webhookHandler);
 **Symptom:** `StripeCardError` or `StripeInvalidRequestError`.
 
 **Fix:**
+
 - In test mode, use Stripe test cards (e.g., `4242 4242 4242 4242`)
 - Verify the Price ID in `.env` matches the one in your Stripe Dashboard
 - Check that your Stripe account is fully activated for live payments
@@ -262,6 +282,7 @@ app.use('/webhook', express.raw({ type: 'application/json' }), webhookHandler);
 **Symptom:** `Error: insufficient funds for gas * price + value` or `nonce too low`.
 
 **Fix:**
+
 ```bash
 # Check wallet balance
 # Ensure PRIVATE_KEY is set correctly (without 0x prefix for some tools)
@@ -278,6 +299,7 @@ PRIVATE_KEY=your_private_key_without_0x_prefix
 **Symptom:** `Error: failed to send transaction: Transaction simulation failed`.
 
 **Fix:**
+
 ```bash
 # Switch to devnet for testing
 SOLANA_RPC_URL=https://api.devnet.solana.com
@@ -296,6 +318,7 @@ ls -la target/deploy/*.so
 **Symptom:** Transaction stuck or `replacement fee too low`.
 
 **Fix:**
+
 ```bash
 # Use a reliable Polygon RPC
 POLYGON_RPC_URL=https://polygon-mainnet.g.alchemy.com/v2/your_key
@@ -313,6 +336,7 @@ POLYGON_ZKEVM_RPC_URL=https://zkevm-rpc.com
 **Symptom:** `Error: Configuration file not found`.
 
 **Fix:**
+
 ```bash
 # Generate a default config
 node training/cli/index.js config --output training/configs/my-model.json
@@ -325,6 +349,7 @@ node training/cli/index.js config --output training/configs/my-model.json
 **Symptom:** `FATAL ERROR: Reached heap limit` or process killed.
 
 **Fix:**
+
 ```bash
 # Increase Node.js heap size
 NODE_OPTIONS="--max-old-space-size=4096" node training/cli/index.js train ...
@@ -339,6 +364,7 @@ NODE_OPTIONS="--max-old-space-size=4096" node training/cli/index.js train ...
 **Symptom:** `Error: Model directory does not exist`.
 
 **Fix:**
+
 ```bash
 # List available models
 ls models/
@@ -356,6 +382,7 @@ ls models/
 **Symptom:** `ValidationError: data/metadata must have required property 'name'`.
 
 **Fix:** Ensure your dataset JSON includes required metadata fields:
+
 ```json
 {
   "metadata": {
@@ -376,6 +403,7 @@ ls models/
 **Symptom:** `Warning: Declared size (1000) does not match actual record count (950)`.
 
 **Fix:**
+
 ```bash
 # Validate dataset with verbose output
 node datasets/validation/validate.js --dataset data/my-dataset.json --verbose
@@ -390,6 +418,7 @@ node datasets/validation/validate.js --dataset data/my-dataset.json --verbose
 **Symptom:** `429 Too Many Requests` from GitHub or blockchain RPC providers.
 
 **Fix:**
+
 - Add exponential backoff to API calls
 - Use a paid tier for higher rate limits
 - Cache responses where appropriate
@@ -401,6 +430,7 @@ node datasets/validation/validate.js --dataset data/my-dataset.json --verbose
 **Symptom:** `ECONNREFUSED` or `ETIMEDOUT`.
 
 **Fix:**
+
 ```bash
 # Set proxy environment variables if behind a corporate proxy
 export HTTP_PROXY=http://proxy.example.com:8080
@@ -417,6 +447,7 @@ export NO_PROXY=localhost,127.0.0.1
 **Symptom:** `Permission denied` when running `./scripts/bootstrap.sh`.
 
 **Fix:**
+
 ```bash
 chmod +x scripts/bootstrap.sh scripts/audit.sh scripts/validate-model.sh sync_deploy.sh
 ```
@@ -428,6 +459,7 @@ chmod +x scripts/bootstrap.sh scripts/audit.sh scripts/validate-model.sh sync_de
 **Symptom:** `Error: Resource not accessible by integration` in CI.
 
 **Fix:** Add the required permissions to your workflow:
+
 ```yaml
 permissions:
   contents: read
@@ -446,17 +478,17 @@ permissions:
 
 ## 10. Quick-Fix Command Reference
 
-| Problem | Command |
-|---------|---------|
-| Fix all lint errors (auto) | `npm run lint:fix` |
-| Fix formatting | `npm run format` |
-| Reinstall dependencies | `rm -rf node_modules && npm install` |
-| Validate all models | `npm run validate:models` |
-| Check system status | `node src/orval-db/index.js --status` |
-| Scan documentation | `npm run docs:scan` |
-| Run smart contract analysis | `npm run smart:analyze` |
-| Bootstrap infrastructure | `./scripts/bootstrap.sh` |
-| Run security audit | `./scripts/audit.sh` |
+| Problem                     | Command                               |
+| --------------------------- | ------------------------------------- |
+| Fix all lint errors (auto)  | `npm run lint:fix`                    |
+| Fix formatting              | `npm run format`                      |
+| Reinstall dependencies      | `rm -rf node_modules && npm install`  |
+| Validate all models         | `npm run validate:models`             |
+| Check system status         | `node src/orval-db/index.js --status` |
+| Scan documentation          | `npm run docs:scan`                   |
+| Run smart contract analysis | `npm run smart:analyze`               |
+| Bootstrap infrastructure    | `./scripts/bootstrap.sh`              |
+| Run security audit          | `./scripts/audit.sh`                  |
 
 ---
 
@@ -470,4 +502,4 @@ If none of the above resolves your issue:
 
 ---
 
-*See also: [FAQ](FAQ.md) | [Complete Documentation](index.md)*
+_See also: [FAQ](FAQ.md) | [Complete Documentation](index.md)_

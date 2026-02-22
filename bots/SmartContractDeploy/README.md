@@ -50,6 +50,7 @@ The SmartContractDeploy bot is a premium automation tool that streamlines smart 
 #### Managing Your Subscription
 
 Access your [Stripe Customer Portal](https://billing.stripe.com/p/login/test_xxx) to:
+
 - View subscription status
 - Update payment method
 - View invoice history
@@ -93,6 +94,7 @@ node bots/SmartContractDeploy/index.js list \
 **Endpoint:** `POST /api/deploy/contract`
 
 **Headers:**
+
 ```json
 {
   "Authorization": "Bearer YOUR_API_KEY",
@@ -101,6 +103,7 @@ node bots/SmartContractDeploy/index.js list \
 ```
 
 **Request Body:**
+
 ```json
 {
   "userId": "user_123",
@@ -117,6 +120,7 @@ node bots/SmartContractDeploy/index.js list \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -136,6 +140,7 @@ node bots/SmartContractDeploy/index.js list \
 **Endpoint:** `GET /api/deploy/status/:deploymentId`
 
 **Headers:**
+
 ```json
 {
   "Authorization": "Bearer YOUR_API_KEY"
@@ -143,6 +148,7 @@ node bots/SmartContractDeploy/index.js list \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -167,6 +173,7 @@ Comment on a pull request or issue to trigger deployments:
 ```
 
 The bot will:
+
 1. Verify your subscription status
 2. Extract contract from the PR
 3. Deploy to the specified network
@@ -198,6 +205,7 @@ console.log(`Deployment status: ${status.status}`);
 ## Supported Networks
 
 ### EVM-Compatible Chains
+
 - Ethereum (Mainnet, Sepolia, Goerli)
 - Polygon (Mainnet, Mumbai)
 - Binance Smart Chain (Mainnet, Testnet)
@@ -206,6 +214,7 @@ console.log(`Deployment status: ${status.status}`);
 - Optimism (Mainnet, Goerli)
 
 ### Non-EVM Chains
+
 - Solana (Mainnet Beta, Devnet, Testnet)
 - Near (Mainnet, Testnet)
 
@@ -246,6 +255,7 @@ Every deployment request includes automatic subscription verification:
 4. **Action Authorization:** Only processes requests with valid, active subscriptions
 
 If subscription is invalid:
+
 ```json
 {
   "success": false,
@@ -322,18 +332,21 @@ const deployments = await deployer.batchDeploy({
 ### Common Issues
 
 **Insufficient Funds:**
+
 ```
 Error: Insufficient funds for gas
 Solution: Ensure your wallet has enough funds for deployment + gas fees
 ```
 
 **Network Congestion:**
+
 ```
 Error: Transaction timeout
 Solution: Increase gas price or retry during off-peak hours
 ```
 
 **Subscription Expired:**
+
 ```
 Error: SUBSCRIPTION_REQUIRED
 Solution: Renew subscription in Stripe customer portal
@@ -355,6 +368,7 @@ Complete API documentation available at: [API.md](./API.md)
 **Monthly Subscription:** $9/month
 
 Includes:
+
 - ✅ Unlimited deployments to testnets
 - ✅ Up to 100 mainnet deployments per month
 - ✅ All supported networks
@@ -371,6 +385,7 @@ This bot is part of the SmartBrain project, licensed under Apache License 2.0.
 ## Changelog
 
 ### v1.0.0 (Initial Release)
+
 - Multi-chain deployment support
 - Stripe payment integration
 - Automatic contract verification

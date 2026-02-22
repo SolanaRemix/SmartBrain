@@ -402,15 +402,13 @@ SmartBrain provides ML capabilities to other bots:
 // In SmartContractAudit bot
 const { InferenceEngine } = require('@smartbrain/inference');
 
-const vulnerabilityDetector = new InferenceEngine(
-  'models/vulnerability-detector'
-);
+const vulnerabilityDetector = new InferenceEngine('models/vulnerability-detector');
 
 async function auditContract(code) {
   const prediction = await vulnerabilityDetector.predict({
     code: code
   });
-  
+
   return {
     vulnerabilities: prediction.vulnerabilities,
     confidence: prediction.confidence,

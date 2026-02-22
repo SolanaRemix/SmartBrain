@@ -13,6 +13,7 @@ This directory contains unit and integration tests for SmartBrain.
 ## Overview
 
 The tests directory provides:
+
 - Comprehensive test coverage
 - Unit tests for isolated components
 - Integration tests for system flows
@@ -22,12 +23,14 @@ The tests directory provides:
 ## Unit Tests
 
 The unit subdirectory contains:
+
 - Component-level tests
 - Function-level tests
 - Isolated logic tests
 - Mock-based testing
 
 Example:
+
 ```javascript
 // tests/unit/model-validator.test.js
 describe('ModelValidator', () => {
@@ -40,12 +43,14 @@ describe('ModelValidator', () => {
 ## Integration Tests
 
 The integration subdirectory contains:
+
 - End-to-end workflow tests
 - API integration tests
 - Database integration tests
 - Multi-component tests
 
 Example:
+
 ```javascript
 // tests/integration/inference-pipeline.test.js
 describe('Inference Pipeline', () => {
@@ -58,21 +63,25 @@ describe('Inference Pipeline', () => {
 ## Running Tests
 
 Run all tests:
+
 ```bash
 npm test
 ```
 
 Run unit tests only:
+
 ```bash
 npm run test:unit
 ```
 
 Run integration tests only:
+
 ```bash
 npm run test:integration
 ```
 
 Run with coverage:
+
 ```bash
 npm run test:coverage
 ```
@@ -80,6 +89,7 @@ npm run test:coverage
 ## Test Structure
 
 Each test file should:
+
 - Import dependencies
 - Set up test fixtures
 - Define test cases
@@ -100,6 +110,7 @@ Each test file should:
 ## Integration
 
 Tests integrate with:
+
 - CI/CD workflows
 - Code coverage tools
 - Linting and formatting

@@ -14,13 +14,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Payment routes (excluding webhook which is already handled)
-app.use('/api/payment/audit', (req, res, next) => {
-  // Skip webhook route as it's already handled
-  if (req.path === '/webhook') {
-    return next('route');
-  }
-  next();
-}, paymentRouter);
+app.use(
+  '/api/payment/audit',
+  (req, res, next) => {
+    // Skip webhook route as it's already handled
+    if (req.path === '/webhook') {
+      return next('route');
+    }
+    next();
+  },
+  paymentRouter
+);
 
 /**
  * Mock vulnerability database for demonstration
@@ -123,11 +127,9 @@ app.post('/api/audit/contract', requireActiveSubscription, async (req, res) => {
     };
 
     // Calculate score (10 - deductions based on severity)
-    const score = Math.max(0, 10 -
-      (summary.critical * 3) -
-      (summary.high * 2) -
-      (summary.medium * 1) -
-      (summary.low * 0.5)
+    const score = Math.max(
+      0,
+      10 - summary.critical * 3 - summary.high * 2 - summary.medium * 1 - summary.low * 0.5
     );
 
     // Log audit for audit trail
@@ -148,7 +150,6 @@ app.post('/api/audit/contract', requireActiveSubscription, async (req, res) => {
       reportUrl: `https://reports.smartbrain.io/${auditId}`,
       message: 'Contract audit completed successfully'
     });
-
   } catch (error) {
     console.error('Audit error:', error);
     res.status(500).json({
@@ -193,7 +194,6 @@ app.get('/api/audit/report/:auditId', requireActiveSubscription, async (req, res
       ],
       reportUrl: `https://reports.smartbrain.io/${auditId}.pdf`
     });
-
   } catch (error) {
     console.error('Report fetch error:', error);
     res.status(500).json({
@@ -228,7 +228,6 @@ app.get('/api/audit/list', requireActiveSubscription, async (req, res) => {
       ],
       total: 1
     });
-
   } catch (error) {
     console.error('List error:', error);
     res.status(500).json({
@@ -269,12 +268,7 @@ app.get('/api/audit/info', (req, res) => {
       'Code quality analysis',
       'Automated test generation'
     ],
-    supportedLanguages: [
-      'Solidity',
-      'Vyper',
-      'Rust',
-      'Move'
-    ],
+    supportedLanguages: ['Solidity', 'Vyper', 'Rust', 'Move'],
     subscriptionUrl: '/subscribe/audit'
   });
 });

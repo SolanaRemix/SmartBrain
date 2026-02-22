@@ -41,7 +41,7 @@ async function quickSecurityScan() {
       },
       {
         headers: {
-          'Authorization': `Bearer ${API_KEY}`,
+          Authorization: `Bearer ${API_KEY}`,
           'Content-Type': 'application/json'
         }
       }
@@ -67,7 +67,6 @@ async function quickSecurityScan() {
 
       return response.data;
     }
-
   } catch (error) {
     console.error('❌ Quick scan failed:', error.response?.data || error.message);
   }

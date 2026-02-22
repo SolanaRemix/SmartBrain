@@ -39,7 +39,15 @@
     "task": {
       "type": "string",
       "description": "The type of ML task (e.g., classification, regression, generation)",
-      "enum": ["classification", "regression", "generation", "detection", "segmentation", "clustering", "other"]
+      "enum": [
+        "classification",
+        "regression",
+        "generation",
+        "detection",
+        "segmentation",
+        "clustering",
+        "other"
+      ]
     },
     "metrics": {
       "type": "object",

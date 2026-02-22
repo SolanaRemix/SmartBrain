@@ -62,10 +62,12 @@ cp .env.example .env
 ### What environment variables are required?
 
 The minimum required variables are:
+
 - `STRIPE_SECRET_KEY` — Stripe secret API key
 - `STRIPE_WEBHOOK_SECRET` — Stripe webhook signing secret
 
 Optional but recommended:
+
 - `GITHUB_TOKEN` — For GitHub API access
 - `INFURA_KEY` or `ALCHEMY_KEY` — For Ethereum deployments
 - `SOLANA_RPC_URL` — For Solana deployments
@@ -88,6 +90,7 @@ chmod +x scripts/bootstrap.sh
 ### What are Smart Functions?
 
 Smart Functions are AI helper modules (`src/smart-functions/`) that provide:
+
 - **AutoAnalyzer** — Analyzes smart contracts for patterns and complexity
 - **AutoFixer** — Suggests and applies automated fixes
 - **AutoTestGenerator** — Generates test scaffolding from ABIs
@@ -103,6 +106,7 @@ npm run smart:analyze
 ```
 
 Or use it programmatically:
+
 ```javascript
 const { AutoAnalyzer } = require('./src/smart-functions');
 const analyzer = new AutoAnalyzer();
@@ -142,6 +146,7 @@ npm run brain:status
 ### Does Orval DB persist data between restarts?
 
 By default, Orval DB is in-memory only. Use the `Persistence` class to save and load state:
+
 ```javascript
 const { createOrvalDb } = require('./src/orval-db');
 const { brain, persistence } = createOrvalDb({
@@ -159,6 +164,7 @@ persistence.save(brain.snapshot());
 ### What is memory decay?
 
 Memory decay is an optional TTL (time-to-live) setting that automatically expires old memories. Set `memoryDecayMs` when creating a `VirtualBrain`:
+
 ```javascript
 const brain = new VirtualBrain({ memoryDecayMs: 86400000 }); // 24 hours
 ```
@@ -184,6 +190,7 @@ npm run docs:scan
 ### How do I configure the docs engine?
 
 Create a `docs-engine.config.json` at the project root:
+
 ```json
 {
   "includeDirs": ["src", "bots", "docs"],
@@ -268,6 +275,7 @@ Run `npm run lint` locally to see the errors, then fix them manually or with `np
 ### How do I add repository secrets for CI?
 
 Go to **GitHub Repository → Settings → Secrets and variables → Actions** and add:
+
 - `CODECOV_TOKEN` — For coverage reporting (optional)
 - `STRIPE_SECRET_KEY` — If running integration tests
 - Any other secrets referenced in workflows
@@ -294,4 +302,4 @@ Yes. The `@SmartBrain` automation bot includes a private key leak scanner that f
 
 ---
 
-*See also: [Troubleshooting Guide](TROUBLESHOOTING.md) | [Complete Documentation](index.md)*
+_See also: [Troubleshooting Guide](TROUBLESHOOTING.md) | [Complete Documentation](index.md)_

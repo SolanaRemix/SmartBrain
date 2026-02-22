@@ -49,6 +49,7 @@ The SmartContractAudit bot is an automated security analysis tool that helps dev
 #### Managing Your Subscription
 
 Access your [Stripe Customer Portal](https://billing.stripe.com/p/login/test_xxx) to:
+
 - View subscription status
 - Update payment method
 - View invoice history
@@ -91,6 +92,7 @@ node bots/SmartContractAudit/index.js list \
 **Endpoint:** `POST /api/audit/contract`
 
 **Headers:**
+
 ```json
 {
   "Authorization": "Bearer YOUR_API_KEY",
@@ -99,6 +101,7 @@ node bots/SmartContractAudit/index.js list \
 ```
 
 **Request Body:**
+
 ```json
 {
   "userId": "user_123",
@@ -118,6 +121,7 @@ node bots/SmartContractAudit/index.js list \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -160,6 +164,7 @@ node bots/SmartContractAudit/index.js list \
 **Endpoint:** `GET /api/audit/report/:auditId`
 
 **Headers:**
+
 ```json
 {
   "Authorization": "Bearer YOUR_API_KEY"
@@ -167,6 +172,7 @@ node bots/SmartContractAudit/index.js list \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -200,6 +206,7 @@ Comment on a pull request or issue to trigger audits:
 ```
 
 The bot will:
+
 1. Verify your subscription status
 2. Extract contract from the PR
 3. Perform comprehensive security audit
@@ -237,6 +244,7 @@ console.log(`Report URL: ${report.reportUrl}`);
 ### Security Vulnerabilities
 
 The bot checks for:
+
 - **Reentrancy attacks**
 - **Integer overflow/underflow**
 - **Unchecked external calls**
@@ -250,6 +258,7 @@ The bot checks for:
 ### Gas Optimization
 
 Identifies opportunities to:
+
 - Optimize storage usage
 - Reduce function call gas costs
 - Improve loop efficiency
@@ -261,6 +270,7 @@ Identifies opportunities to:
 ### Best Practices
 
 Checks for:
+
 - Proper use of modifiers
 - Event emission
 - Error handling
@@ -288,6 +298,7 @@ Every audit request includes automatic subscription verification:
 4. **Action Authorization:** Only processes requests with valid, active subscriptions
 
 If subscription is invalid:
+
 ```json
 {
   "success": false,
@@ -302,6 +313,7 @@ If subscription is invalid:
 ### Detailed Findings
 
 Each finding includes:
+
 - Severity level and category
 - Clear description of the issue
 - Exact location (file and line number)
@@ -439,18 +451,21 @@ audit:
 ### Common Issues
 
 **False Positives:**
+
 ```
 Some findings may be false positives depending on context.
 Review each finding and use your judgment.
 ```
 
 **Subscription Expired:**
+
 ```
 Error: SUBSCRIPTION_REQUIRED
 Solution: Renew subscription in Stripe customer portal
 ```
 
 **Large Contract Timeout:**
+
 ```
 Error: Audit timeout
 Solution: Split large contracts or increase timeout limit
@@ -472,6 +487,7 @@ Complete API documentation available at: [API.md](./API.md)
 **Monthly Subscription:** $4/month
 
 Includes:
+
 - ✅ Unlimited contract audits
 - ✅ Security vulnerability detection
 - ✅ Gas optimization analysis
@@ -489,6 +505,7 @@ This bot is part of the SmartBrain project, licensed under Apache License 2.0.
 ## Changelog
 
 ### v1.0.0 (Initial Release)
+
 - Security vulnerability detection
 - Gas optimization analysis
 - Best practices checking
