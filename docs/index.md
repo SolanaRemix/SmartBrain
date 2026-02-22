@@ -2328,7 +2328,7 @@ jobs:
         run: npm ci
       
       - name: Train Model
-        run: node training/cli/index.js train --config training/configs/production.json
+        run: node training/cli/index.js train --config "$TRAINING_CONFIG_PATH"
         timeout-minutes: 120
       
       - name: Validate Trained Model
