@@ -275,6 +275,18 @@ See [Orval DB documentation](docs/ORVAL_DB.md) for full reference.
 
 ---
 
+#### 🔍 Node-Aware Audit & Cleanliness Engine (`src/node-audit/`)
+
+Dynamically audits Node.js dependencies for deprecated packages, lock-file sync issues, missing peer deps, and CI optimisation opportunities. Writes findings to `SMARTBRAIN_KNOWLEDGE.md`.
+
+```bash
+npm run audit:node   # Run the audit and update SMARTBRAIN_KNOWLEDGE.md
+```
+
+See [SMARTBRAIN_KNOWLEDGE.md](SMARTBRAIN_KNOWLEDGE.md) for the latest audit report.
+
+---
+
 #### 📖 Self-Updating Documentation Engine (`src/docs-engine/`)
 
 Keeps documentation fresh by scanning the codebase:

@@ -26,7 +26,8 @@
     "docs:scan": "node src/docs-engine/auto-updater.js --scan",
     "docs:update": "node src/docs-engine/auto-updater.js --update",
     "smart:analyze": "node src/smart-functions/auto-analyze.js",
-    "brain:status": "node src/orval-db/index.js --status"
+    "brain:status": "node src/orval-db/index.js --status",
+    "audit:node": "node src/node-audit/index.js"
   },
   "keywords": [
     "stripe",
