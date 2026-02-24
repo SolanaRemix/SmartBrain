@@ -19,7 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { spawnSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '../..');
 const KNOWLEDGE_FILE = path.join(ROOT, 'SMARTBRAIN_KNOWLEDGE.md');
@@ -36,19 +36,6 @@ const KNOWLEDGE_FILE = path.join(ROOT, 'SMARTBRAIN_KNOWLEDGE.md');
 function readJson(filePath) {
   try {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Run a shell command and return trimmed stdout, or null on error.
- * @param {string} cmd
- * @returns {string|null}
- */
-function run(cmd) {
-  try {
-    return execSync(cmd, { cwd: ROOT, timeout: 30000 }).toString().trim();
   } catch {
     return null;
   }
@@ -89,13 +76,18 @@ function findDeprecated() {
  * @returns {{ inSync: boolean, error: string|null }}
  */
 function checkLockSync() {
-  const result = run('npm ci --dry-run 2>&1');
-  if (result === null) {
-    return { inSync: false, error: 'npm ci --dry-run timed out or failed' };
-  }
-  if (result.includes('npm error')) {
-    const match = result.match(/npm error (.+)/);
-    return { inSync: false, error: match ? match[1] : 'Unknown npm ci error' };
+  const result = spawnSync('npm', ['ci', '--dry-run'], {
+    cwd: ROOT,
+    timeout: 30000,
+    encoding: 'utf8'
+  });
+  const output = (result.stdout || '') + (result.stderr || '');
+  if (result.error || result.status !== 0) {
+    const match = output.match(/npm error (.+)/);
+    return {
+      inSync: false,
+      error: match ? match[1] : output.slice(0, 200) || 'npm ci --dry-run failed'
+    };
   }
   return { inSync: true, error: null };
 }
@@ -136,7 +128,12 @@ function findMissingPeerDeps() {
  * @returns {{ total: number, high: number, critical: number, advisories: object[] }}
  */
 function runNpmAudit() {
-  const raw = run('npm audit --json 2>/dev/null');
+  const result = spawnSync('npm', ['audit', '--json'], {
+    cwd: ROOT,
+    timeout: 30000,
+    encoding: 'utf8'
+  });
+  const raw = result.stdout || '';
   if (!raw) {
     return { total: 0, high: 0, critical: 0, advisories: [] };
   }
@@ -221,12 +218,11 @@ function buildReport() {
       status:
         lockSync.inSync &&
         deprecated.length === 0 &&
-        npmAudit.critical === 0 &&
+        npmAudit.high === 0 &&
         missingPeers.length === 0
           ? 'CLEAN'
           : 'NEEDS_ATTENTION',
-      issues:
-        (!lockSync.inSync ? 1 : 0) + deprecated.length + missingPeers.length + npmAudit.critical
+      issues: (!lockSync.inSync ? 1 : 0) + deprecated.length + missingPeers.length + npmAudit.high
     }
   };
 }

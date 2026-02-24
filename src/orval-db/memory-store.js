@@ -131,7 +131,10 @@ class MemoryStore extends EventEmitter {
     const ns = this._ns(namespace);
     const result = [];
     for (const [key, entry] of ns.entries()) {
-      if (!this._isExpired(entry)) {
+      if (this._isExpired(entry)) {
+        ns.delete(key);
+        this.emit('expire', { namespace, key });
+      } else {
         result.push(key);
       }
     }

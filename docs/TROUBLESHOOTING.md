@@ -51,11 +51,12 @@ nvm use 20
 ```bash
 # Clear npm cache and retry
 npm cache clean --force
-rm -rf node_modules package-lock.json
+rm -rf node_modules
 npm install
 
-# If peer dependency conflicts persist, use legacy resolution
-npm install --legacy-peer-deps
+# If the lock file is out of date, regenerate it
+rm -f package-lock.json
+npm install
 ```
 
 ---

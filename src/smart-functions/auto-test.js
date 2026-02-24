@@ -90,8 +90,8 @@ class AutoTestGenerator {
 
     if (this.options.includeEdgeCases && fn.inputs && fn.inputs.length > 0) {
       lines.push("    it('should handle invalid inputs gracefully', async () => {");
-      lines.push('      // TODO: test with invalid/boundary inputs');
-      lines.push(`      expect(() => ${fnCall}).not.toThrow();`);
+      lines.push('      // TODO: supply invalid/boundary inputs');
+      lines.push(`      await expect(${fnCall}).resolves.toBeDefined();`);
       lines.push('    });');
     }
 

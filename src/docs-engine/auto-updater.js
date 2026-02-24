@@ -40,6 +40,10 @@ class DocsAutoUpdater {
       configFile,
       config
     );
+    const threshold = this.config.stalenessThresholdDays;
+    if (typeof threshold !== 'number' || threshold <= 0 || !isFinite(threshold)) {
+      throw new Error(`stalenessThresholdDays must be a positive finite number, got: ${threshold}`);
+    }
   }
 
   /**

@@ -54,6 +54,25 @@ class VirtualBrain {
       throw new Error('patternData must be a non-null object');
     }
     const existing = this.store.get(NS_PATTERNS, patternId);
+    // Enforce maxPatterns cap: evict the least-frequently-used pattern when at capacity
+    if (!existing) {
+      const currentKeys = this.store.keys(NS_PATTERNS);
+      if (currentKeys.length >= this.options.maxPatterns) {
+        let lfuKey = null;
+        let lfuFreq = Infinity;
+        for (const k of currentKeys) {
+          const data = this.store.get(NS_PATTERNS, k);
+          const freq = (data && data.frequency) || 0;
+          if (freq < lfuFreq) {
+            lfuFreq = freq;
+            lfuKey = k;
+          }
+        }
+        if (lfuKey) {
+          this.store.delete(NS_PATTERNS, lfuKey);
+        }
+      }
+    }
     const merged = Object.assign({}, existing || {}, patternData, {
       lastSeen: new Date().toISOString(),
       frequency: ((existing && existing.frequency) || 0) + 1
