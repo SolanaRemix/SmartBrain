@@ -12,6 +12,7 @@ This directory contains dataset validation scripts and dataset management infras
 ## Overview
 
 The datasets directory provides:
+
 - Dataset validation and quality checks
 - Schema validation
 - Data integrity verification
@@ -20,6 +21,7 @@ The datasets directory provides:
 ## Dataset Validation
 
 The validation subdirectory contains scripts for:
+
 - Schema validation
 - Data type checking
 - Missing value detection
@@ -28,6 +30,7 @@ The validation subdirectory contains scripts for:
 - Format verification
 
 Example usage:
+
 ```bash
 node datasets/validation/validate.js --dataset path/to/data.json --schema path/to/schema.json
 ```
@@ -35,6 +38,7 @@ node datasets/validation/validate.js --dataset path/to/data.json --schema path/t
 ## Dataset Requirements
 
 Datasets should include:
+
 - Proper formatting (JSON, CSV, etc.)
 - Schema documentation
 - Metadata (source, version, date)
@@ -44,6 +48,7 @@ Datasets should include:
 ## Validation Rules
 
 Datasets are validated against:
+
 - Schema definitions
 - Data type constraints
 - Required fields
@@ -53,6 +58,7 @@ Datasets are validated against:
 ## Integration
 
 Dataset validation integrates with:
+
 - Training pipeline (`/training`)
 - Model registry (`/models`)
 - Inference engine (`/inference`)

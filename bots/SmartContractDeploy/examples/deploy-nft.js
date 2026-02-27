@@ -59,7 +59,7 @@ async function deployNFTContract() {
       },
       {
         headers: {
-          'Authorization': `Bearer ${API_KEY}`,
+          Authorization: `Bearer ${API_KEY}`,
           'Content-Type': 'application/json'
         }
       }
@@ -77,7 +77,6 @@ async function deployNFTContract() {
 
       return response.data;
     }
-
   } catch (error) {
     console.error('❌ Deployment failed:', error.response?.data || error.message);
   }
@@ -92,24 +91,20 @@ async function checkDeploymentStatus(deploymentId) {
   try {
     console.log('\nChecking deployment status...');
 
-    const response = await axios.get(
-      `${API_BASE_URL}/api/deploy/status/${deploymentId}`,
-      {
-        headers: {
-          'Authorization': `Bearer ${API_KEY}`
-        },
-        params: {
-          userId: USER_ID
-        }
+    const response = await axios.get(`${API_BASE_URL}/api/deploy/status/${deploymentId}`, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`
+      },
+      params: {
+        userId: USER_ID
       }
-    );
+    });
 
     if (response.data.success) {
       console.log('Status:', response.data.status);
       console.log('Verification:', response.data.verification);
       console.log('Block Number:', response.data.details.blockNumber);
     }
-
   } catch (error) {
     console.error('❌ Status check failed:', error.response?.data || error.message);
   }

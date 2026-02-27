@@ -65,7 +65,9 @@ function showHelp() {
   console.log('    --model <path>      Path to model directory\n');
   console.log('Examples:');
   console.log('  node inference/cli/index.js predict --model models/my-model --input data.json');
-  console.log('  node inference/cli/index.js batch --model models/my-model --input batch.json --output results.json');
+  console.log(
+    '  node inference/cli/index.js batch --model models/my-model --input batch.json --output results.json'
+  );
   console.log('  node inference/cli/index.js benchmark --model models/my-model --iterations 1000');
   console.log('  node inference/cli/index.js info --model models/my-model');
 }
@@ -82,7 +84,7 @@ function loadModelMetadata(modelPath) {
     const content = fs.readFileSync(metadataPath, 'utf8');
     return JSON.parse(content);
   } catch (error) {
-    throw new Error(`Failed to parse model metadata: ${error.message}`);
+    throw new Error(`Failed to parse model metadata: ${error.message}`, { cause: error });
   }
 }
 
@@ -217,22 +219,22 @@ if (require.main === module) {
 
   try {
     switch (command) {
-    case 'predict':
-      predict(options);
-      break;
-    case 'batch':
-      batchInference(options);
-      break;
-    case 'benchmark':
-      benchmark(options);
-      break;
-    case 'info':
-      showInfo(options);
-      break;
-    case 'help':
-    default:
-      showHelp();
-      break;
+      case 'predict':
+        predict(options);
+        break;
+      case 'batch':
+        batchInference(options);
+        break;
+      case 'benchmark':
+        benchmark(options);
+        break;
+      case 'info':
+        showInfo(options);
+        break;
+      case 'help':
+      default:
+        showHelp();
+        break;
     }
   } catch (error) {
     console.error(`Error: ${error.message}`);

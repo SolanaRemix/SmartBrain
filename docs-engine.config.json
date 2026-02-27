@@ -1,0 +1,6 @@
+{
+  "includeDirs": ["src", "bots", "docs"],
+  "docExtensions": [".md"],
+  "codeExtensions": [".js"],
+  "stalenessThresholdDays": 30
+}
