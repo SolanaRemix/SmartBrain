@@ -2014,8 +2014,10 @@ CyberAi Ecosystem
 
 SmartBrain provides ML capabilities to other bots:
 
+_Conceptual example – illustrative only; not using the current SmartBrain public API._
+
 ```javascript
-// In SmartContractAudit bot
+// Conceptual example: how a SmartContractAudit bot might call an inference engine
 const { InferenceEngine } = require('@smartbrain/inference');
 
 const vulnerabilityDetector = new InferenceEngine(
