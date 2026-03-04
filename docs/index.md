@@ -269,18 +269,18 @@ This checks:
 - ✅ Model registry
 - ✅ Workflow files
 
-#### 6. Run Tests
+#### 6. Run Validation Checks
 
-Verify everything is working correctly:
+Since a full automated test suite is not yet implemented, use the available validation commands to verify your installation:
 ```bash
-# Run all tests
-npm test
+# Validate model configurations and registry
+npm run validate:models
 
-# Run linting
-npm run lint
+# Validate dataset configurations
+npm run validate:datasets
 
-# Format code
-npm run format:check
+# Verify inference CLI is working
+node inference/cli/index.js info --help
 ```
 
 ### Configuration Options
