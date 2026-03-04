@@ -1522,14 +1522,21 @@ Automatically fixes code issues:
 Optimizes and fixes model issues:
 
 ```bash
+# NOTE: Placeholder commands — the model fix CLI is not yet exposed as
+# a public entrypoint in this repository. These examples are illustrative
+# only and will be updated in a future release once the actual CLI/API
+# for model auto-fix is finalized.
+#
+# Example (placeholder) usage:
+#
 # Optimize model
-node tools/fix/model.js --model models/my-model --optimize
-
+# node tools/fix/model.js --model models/my-model --optimize
+#
 # Fix model metadata
-node tools/fix/model.js --model models/my-model --metadata
-
+# node tools/fix/model.js --model models/my-model --metadata
+#
 # Convert model format
-node tools/fix/model.js --model models/my-model --convert onnx
+# node tools/fix/model.js --model models/my-model --convert onnx
 ```
 
 **Fixable Issues:**
