@@ -1326,22 +1326,6 @@ node tools/analysis/schedule.js --cron "0 */6 * * *"
 node tools/analysis/run.js --all
 ```
 
-### Terminal Commands
-
-```bash
-# Enable Auto Analysis
-/terminal SmartBrain.autoAnalysis --enable
-
-# Run analysis
-/terminal SmartBrain.autoAnalysis --run
-
-# View latest report
-/terminal SmartBrain.autoAnalysis --report
-
-# Check status
-/terminal SmartBrain.autoAnalysis --status
-```
-
 ### Analysis Reports
 
 Auto Analysis generates comprehensive reports with actionable insights:
