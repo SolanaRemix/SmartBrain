@@ -14,13 +14,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Payment routes (excluding webhook which is already mounted)
-app.use('/api/payment/deploy', (req, res, next) => {
-  // Skip webhook route as it's already handled
-  if (req.path === '/webhook') {
-    return next('route');
-  }
-  next();
-}, paymentRouter);
+app.use(
+  '/api/payment/deploy',
+  (req, res, next) => {
+    // Skip webhook route as it's already handled
+    if (req.path === '/webhook') {
+      return next('route');
+    }
+    next();
+  },
+  paymentRouter
+);
 
 /**
  * Deploy smart contract
@@ -68,7 +72,6 @@ app.post('/api/deploy/contract', requireActiveSubscription, async (req, res) => 
       timestamp: new Date().toISOString(),
       message: 'Contract deployment initiated successfully'
     });
-
   } catch (error) {
     console.error('Deployment error:', error);
     res.status(500).json({
@@ -100,7 +103,6 @@ app.get('/api/deploy/status/:deploymentId', requireActiveSubscription, async (re
         timestamp: new Date().toISOString()
       }
     });
-
   } catch (error) {
     console.error('Status check error:', error);
     res.status(500).json({
@@ -134,7 +136,6 @@ app.get('/api/deploy/list', requireActiveSubscription, async (req, res) => {
       ],
       total: 1
     });
-
   } catch (error) {
     console.error('List error:', error);
     res.status(500).json({

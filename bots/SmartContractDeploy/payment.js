@@ -193,11 +193,7 @@ router.post('/webhook', async (req, res) => {
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(
-      req.body,
-      sig,
-      process.env.STRIPE_WEBHOOK_SECRET
-    );
+    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
   } catch (err) {
     console.error('Webhook signature verification failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -205,36 +201,36 @@ router.post('/webhook', async (req, res) => {
 
   // Handle specific events
   switch (event.type) {
-  case 'customer.subscription.created':
-    console.log('New subscription created:', event.data.object.id);
-    // TODO: Store subscription data in database
-    // TODO: Send welcome email with API credentials
-    break;
+    case 'customer.subscription.created':
+      console.log('New subscription created:', event.data.object.id);
+      // TODO: Store subscription data in database
+      // TODO: Send welcome email with API credentials
+      break;
 
-  case 'customer.subscription.updated':
-    console.log('Subscription updated:', event.data.object.id);
-    // TODO: Update subscription status in database
-    break;
+    case 'customer.subscription.updated':
+      console.log('Subscription updated:', event.data.object.id);
+      // TODO: Update subscription status in database
+      break;
 
-  case 'customer.subscription.deleted':
-    console.log('Subscription cancelled:', event.data.object.id);
-    // TODO: Revoke API access
-    // TODO: Send cancellation confirmation email
-    break;
+    case 'customer.subscription.deleted':
+      console.log('Subscription cancelled:', event.data.object.id);
+      // TODO: Revoke API access
+      // TODO: Send cancellation confirmation email
+      break;
 
-  case 'invoice.payment_succeeded':
-    console.log('Payment succeeded:', event.data.object.id);
-    // TODO: Extend subscription period
-    break;
+    case 'invoice.payment_succeeded':
+      console.log('Payment succeeded:', event.data.object.id);
+      // TODO: Extend subscription period
+      break;
 
-  case 'invoice.payment_failed':
-    console.log('Payment failed:', event.data.object.id);
-    // TODO: Send payment failure notification
-    // TODO: Suspend access if multiple failures
-    break;
+    case 'invoice.payment_failed':
+      console.log('Payment failed:', event.data.object.id);
+      // TODO: Send payment failure notification
+      // TODO: Suspend access if multiple failures
+      break;
 
-  default:
-    console.log(`Unhandled event type: ${event.type}`);
+    default:
+      console.log(`Unhandled event type: ${event.type}`);
   }
 
   res.json({ received: true });

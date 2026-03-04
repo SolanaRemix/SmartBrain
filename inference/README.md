@@ -14,6 +14,7 @@ This directory contains the inference engine, CLI commands, and API endpoints fo
 ## Overview
 
 The inference directory provides:
+
 - High-performance inference engine
 - Command-line interface for running predictions
 - REST API endpoints for model serving
@@ -26,12 +27,14 @@ The engine subdirectory contains the core inference logic, model loading, and pr
 ## CLI Interface
 
 The CLI subdirectory provides command-line tools for:
+
 - Running single predictions
 - Batch inference
 - Model benchmarking
 - Performance profiling
 
 Example:
+
 ```bash
 node inference/cli/index.js predict --model my-model --input data.json
 ```
@@ -39,6 +42,7 @@ node inference/cli/index.js predict --model my-model --input data.json
 ## API Endpoints
 
 The API subdirectory contains REST API endpoints for:
+
 - Real-time predictions
 - Batch processing
 - Model health checks
@@ -47,6 +51,7 @@ The API subdirectory contains REST API endpoints for:
 ## Integration
 
 Inference components integrate with:
+
 - Model registry (`/models`)
 - Training outputs (`/training`)
 - Validation datasets (`/datasets`)
@@ -54,6 +59,7 @@ Inference components integrate with:
 ## Performance
 
 The inference engine is optimized for:
+
 - Low latency predictions
 - High throughput batch processing
 - Efficient memory usage

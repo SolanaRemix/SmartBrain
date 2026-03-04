@@ -13,6 +13,7 @@ This directory contains the ML model registry, metadata, and versioning infrastr
 ## Overview
 
 The models directory manages:
+
 - Model versioning and lifecycle
 - Model metadata and schemas
 - Model registry for tracking trained models
@@ -29,6 +30,7 @@ The metadata subdirectory contains JSON schemas and validation rules for model m
 ## Usage
 
 Models are registered with metadata including:
+
 - Model name and version
 - Framework (TensorFlow, PyTorch, etc.)
 - Task type (classification, generation, etc.)
@@ -39,6 +41,7 @@ Models are registered with metadata including:
 ## Integration
 
 Models in this registry integrate with:
+
 - Inference engine (`/inference`)
 - Training pipeline (`/training`)
 - Dataset validation (`/datasets`)

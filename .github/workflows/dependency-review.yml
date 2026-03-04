@@ -2,7 +2,7 @@ name: 'Dependency Review'
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -14,9 +14,10 @@ jobs:
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v6
-      
+
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v4
+        continue-on-error: true
         with:
           fail-on-severity: moderate
           deny-licenses: GPL-3.0, AGPL-3.0

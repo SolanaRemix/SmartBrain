@@ -5,7 +5,9 @@ This directory contains utility scripts for bootstrapping, auditing, and validat
 ## Available Scripts
 
 ### bootstrap.sh
+
 Bootstraps the SmartBrain infrastructure by:
+
 - Checking dependencies
 - Setting up directories
 - Installing required packages
@@ -13,12 +15,15 @@ Bootstraps the SmartBrain infrastructure by:
 - Validating setup
 
 Usage:
+
 ```bash
 ./scripts/bootstrap.sh
 ```
 
 ### audit.sh
+
 Audits the SmartBrain setup and configurations:
+
 - Validates directory structure
 - Checks file permissions
 - Verifies configurations
@@ -26,12 +31,15 @@ Audits the SmartBrain setup and configurations:
 - Generates audit report
 
 Usage:
+
 ```bash
 ./scripts/audit.sh
 ```
 
 ### validate-model.sh
+
 Validates model files and metadata:
+
 - Checks model format
 - Validates metadata schema
 - Verifies model integrity
@@ -39,6 +47,7 @@ Validates model files and metadata:
 - Checks dependencies
 
 Usage:
+
 ```bash
 ./scripts/validate-model.sh path/to/model
 ```
@@ -46,16 +55,19 @@ Usage:
 ## Usage Guidelines
 
 1. Make scripts executable:
+
    ```bash
    chmod +x scripts/*.sh
    ```
 
 2. Run bootstrap first on new setups:
+
    ```bash
    ./scripts/bootstrap.sh
    ```
 
 3. Run audit to verify setup:
+
    ```bash
    ./scripts/audit.sh
    ```
@@ -68,6 +80,7 @@ Usage:
 ## Integration
 
 Scripts integrate with:
+
 - GitHub Actions workflows
 - CI/CD pipelines
 - Local development environment

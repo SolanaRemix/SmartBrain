@@ -65,7 +65,7 @@ async function auditContract() {
       },
       {
         headers: {
-          'Authorization': `Bearer ${API_KEY}`,
+          Authorization: `Bearer ${API_KEY}`,
           'Content-Type': 'application/json'
         }
       }
@@ -117,7 +117,6 @@ async function auditContract() {
     } else {
       console.error('❌ Audit failed:', response.data.message);
     }
-
   } catch (error) {
     if (error.response) {
       console.error('❌ Error:', error.response.data.message);

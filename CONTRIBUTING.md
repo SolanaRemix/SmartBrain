@@ -112,7 +112,7 @@ function validateMetadata(metadata, schema) {
   if (!metadata || !schema) {
     return false;
   }
-  
+
   // Validation logic
   return true;
 }
@@ -125,6 +125,7 @@ function validateMetadata(metadata, schema) {
 - EditorConfig: `.editorconfig`
 
 Run linting:
+
 ```bash
 npm run lint
 npm run lint:fix  # Auto-fix issues

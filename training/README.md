@@ -13,6 +13,7 @@ This directory contains the training pipeline scaffolding and configurations for
 ## Overview
 
 The training directory provides:
+
 - End-to-end training pipeline
 - Configuration management
 - Hyperparameter tuning
@@ -21,6 +22,7 @@ The training directory provides:
 ## Training Pipeline
 
 The pipeline subdirectory contains:
+
 - Data preprocessing
 - Model training logic
 - Evaluation and validation
@@ -30,6 +32,7 @@ The pipeline subdirectory contains:
 ## Training Configurations
 
 The configs subdirectory contains:
+
 - Model architectures
 - Hyperparameter settings
 - Training schedules
@@ -37,6 +40,7 @@ The configs subdirectory contains:
 - Environment configurations
 
 Example configuration:
+
 ```yaml
 model:
   name: smart-contract-classifier
@@ -55,6 +59,7 @@ training:
 ## Usage
 
 Train a model:
+
 ```bash
 node training/cli/index.js train --config configs/my-model.yaml
 ```
@@ -62,6 +67,7 @@ node training/cli/index.js train --config configs/my-model.yaml
 ## Integration
 
 Training components integrate with:
+
 - Model registry (`/models`)
 - Datasets (`/datasets`)
 - Inference engine (`/inference`)

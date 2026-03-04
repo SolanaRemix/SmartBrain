@@ -12,57 +12,21 @@ Welcome to the SmartBrain documentation. This comprehensive guide covers all asp
 
 ### Getting Started
 1. [Introduction](#introduction)
-2. [Quick Start Guide](#quick-start-guide)
-3. [Installation & Setup](#installation--setup)
-
-### Core Concepts
-4. [Architecture Overview](#architecture-overview)
-5. [System Components](#system-components)
-6. [Integration Points](#integration-points)
-
-### Model Management
-7. [Model Lifecycle](#model-lifecycle)
-8. [Model Versioning](#model-versioning)
-9. [Model Development](#model-development)
-
-### Data Management
-14. [Dataset Requirements](#dataset-requirements)
-15. [Dataset Structure](#dataset-structure)
-16. [Dataset Validation](#dataset-validation)
-17. [Dataset Best Practices](#dataset-best-practices)
-
-### Training & Inference
-18. [Training Pipeline Guide](#training-pipeline-guide)
-19. [Training Configuration](#training-configuration)
-20. [Training Execution](#training-execution)
-21. [Training Monitoring](#training-monitoring)
-22. [Inference Usage Guide](#inference-usage-guide)
-23. [Command-Line Inference](#command-line-inference)
-24. [API Inference](#api-inference)
-25. [Batch Processing](#batch-processing)
-
-### Automation Features
-26. [Auto Sync](#auto-sync)
-27. [Auto Test](#auto-test)
-28. [Auto Analysis](#auto-analysis)
-29. [Auto Fix](#auto-fix)
-
-### Integration & Tools
-30. [Terminal Command Integration](#terminal-command-integration)
-31. [Ecosystem Integration](#ecosystem-integration)
-32. [CI/CD Integration](#cicd-integration)
-33. [Bot Integration](#bot-integration)
-
-### Reference & Best Practices
-34. [API Reference](#api-reference)
-35. [Best Practices](#best-practices)
-36. [Troubleshooting](#troubleshooting)
-37. [Performance Optimization](#performance-optimization)
-
-### Additional Resources
-38. [Support and Resources](#support-and-resources)
-39. [Contributing](#contributing)
-40. [License](#license)
+2. [Architecture Overview](#architecture-overview)
+3. [Model Lifecycle](#model-lifecycle)
+4. [Model Versioning](#model-versioning)
+5. [Dataset Requirements](#dataset-requirements)
+6. [Inference Usage Guide](#inference-usage-guide)
+7. [Training Pipeline Guide](#training-pipeline-guide)
+8. [Terminal Command Integration](#terminal-command-integration)
+9. [Ecosystem Integration](#ecosystem-integration)
+10. [API Reference](#api-reference)
+11. [Best Practices](#best-practices)
+12. [Smart Functions](../src/smart-functions/index.js) — Auto-analyze, auto-fix, auto-test, auto-sync, smart-suggest
+13. [Orval DB Virtual Memory System](ORVAL_DB.md) — AI brain memory layer
+14. [Self-Updating Documentation](SELF_UPDATING_DOCS.md) — Docs engine and freshness scoring
+15. [Troubleshooting Guide](TROUBLESHOOTING.md) — Common issues and quick fixes
+16. [FAQ](FAQ.md) — Frequently asked questions
 
 ## Introduction
 
@@ -810,22 +774,18 @@ node tools/sync/disable.js
 - Syncs only when you commit changes
 - Best for: Controlled synchronization
 
-**3. Manual**
-- Syncs only when explicitly triggered
-- Best for: Large files or limited bandwidth
+const vulnerabilityDetector = new InferenceEngine('models/vulnerability-detector');
 
-**4. Scheduled**
-- Syncs at specific times (e.g., every hour, daily)
-- Best for: Regular backups without constant monitoring
+async function auditContract(code) {
+  const prediction = await vulnerabilityDetector.predict({
+    code: code
+  });
 
-### Conflict Resolution Strategies
-
-Auto Sync provides several conflict resolution strategies:
-
-**prefer_local**: Keep local changes, discard remote changes
-```json
-{
-  "conflict_resolution": "prefer_local"
+  return {
+    vulnerabilities: prediction.vulnerabilities,
+    confidence: prediction.confidence,
+    recommendations: prediction.recommendations
+  };
 }
 ```
 

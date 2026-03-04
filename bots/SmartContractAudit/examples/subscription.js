@@ -38,7 +38,6 @@ async function createSubscription() {
 
       return response.data;
     }
-
   } catch (error) {
     console.error('❌ Failed to create checkout session:', error.response?.data || error.message);
   }
@@ -52,14 +51,11 @@ async function checkSubscriptionStatus() {
   try {
     console.log('Checking subscription status...');
 
-    const response = await axios.get(
-      `${API_BASE_URL}/api/payment/audit/subscription-status`,
-      {
-        params: {
-          userId: USER_ID
-        }
+    const response = await axios.get(`${API_BASE_URL}/api/payment/audit/subscription-status`, {
+      params: {
+        userId: USER_ID
       }
-    );
+    });
 
     if (response.data.success) {
       console.log('Bot:', response.data.botName);
@@ -75,7 +71,6 @@ async function checkSubscriptionStatus() {
 
       return response.data;
     }
-
   } catch (error) {
     console.error('❌ Status check failed:', error.response?.data || error.message);
   }
@@ -90,17 +85,14 @@ async function getAuditHistory() {
   try {
     console.log('Fetching audit history...');
 
-    const response = await axios.get(
-      `${API_BASE_URL}/api/audit/list`,
-      {
-        headers: {
-          'Authorization': `Bearer ${API_KEY}`
-        },
-        params: {
-          userId: USER_ID
-        }
+    const response = await axios.get(`${API_BASE_URL}/api/audit/list`, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`
+      },
+      params: {
+        userId: USER_ID
       }
-    );
+    });
 
     if (response.data.success) {
       console.log(`\nTotal Audits: ${response.data.total}`);
@@ -121,7 +113,6 @@ async function getAuditHistory() {
 
       return response.data;
     }
-
   } catch (error) {
     console.error('❌ Failed to fetch audit history:', error.response?.data || error.message);
   }
@@ -151,8 +142,7 @@ async function runSubscriptionExample() {
 
 // Run the example
 if (require.main === module) {
-  runSubscriptionExample()
-    .catch(error => console.error('Example failed:', error));
+  runSubscriptionExample().catch(error => console.error('Example failed:', error));
 }
 
 module.exports = {
