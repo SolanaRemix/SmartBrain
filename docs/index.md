@@ -994,23 +994,25 @@ Create or edit `.smartbrain/test.json`:
 #### CLI Commands
 
 ```bash
-# Enable Auto Test
-node tools/test/enable.js
+# Run all tests (uses the default npm test script)
+npm test
 
-# Run all tests manually
-node tools/test/run.js --all
+# Run all tests explicitly (if you define a dedicated script)
+npm run test:all
 
-# Run specific test suite
-node tools/test/run.js --suite unit
+# Run specific test suites (examples; adjust to your package.json)
+npm run test:unit
+npm run test:integration
+npm run test:model
 
 # Check test status
-node tools/test/status.js
+npm run test:status
 
 # View test coverage
-node tools/test/coverage.js
+npm run test:coverage
 
 # View test history
-node tools/test/history.js
+npm run test:history
 ```
 
 #### Planned Terminal Commands
