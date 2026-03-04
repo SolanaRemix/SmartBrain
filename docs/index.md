@@ -1184,14 +1184,14 @@ Auto Analysis continuously monitors your SmartBrain workspace and automatically 
 Examines code quality, style, and potential issues:
 
 ```bash
-# Run code analysis
-node tools/analysis/code.js
-
-# Analyze specific files
-node tools/analysis/code.js --files "src/**/*.js"
-
-# Get code quality score
-node tools/analysis/code.js --score
+# Planned: Run code analysis (implementation coming in a future release)
+# The final command will be exposed via a dedicated analysis entrypoint,
+# such as an npm script or CLI wrapper. For example, it may look like:
+#
+#   npm run smart:analyze -- --files "src/**/*.js" --score
+#
+# Refer to the latest README or release notes for the actual command
+# once the analysis tooling has been implemented.
 ```
 
 **Checks:**
