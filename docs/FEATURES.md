@@ -211,13 +211,13 @@ node tools/test/coverage.js
 **Common Commands:**
 ```bash
 # Preview fixes
-node tools/fix/run.js --preview
+/terminal SmartBrain.fix --preview
 
 # Apply fixes
-/terminal SmartBrain.autoFix --apply
+/terminal SmartBrain.fix --apply
 
-# Rollback
-node tools/fix/rollback.js
+# Rollback (planned - command will be added in a future release)
+# /terminal SmartBrain.fix --rollback
 ```
 
 **Use Cases:**
