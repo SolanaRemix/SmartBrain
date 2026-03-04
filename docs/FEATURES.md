@@ -425,15 +425,6 @@ SmartBrain integrates with GitHub Copilot:
 | `audit.sh` | System audit | `./scripts/audit.sh` |
 | `validate-model.sh` | Model validation | `./scripts/validate-model.sh` |
 
-### Tool Reference
-
-| Tool | Purpose | Command |
-|------|---------|---------|
-| Sync | Manage synchronization | `node tools/sync/<command>.js` |
-| Test | Manage testing | `node tools/test/<command>.js` |
-| Analysis | Manage analysis | `node tools/analysis/<command>.js` |
-| Fix | Manage fixes | `node tools/fix/<command>.js` |
-
 ---
 
 ## Feature Availability by Plan
