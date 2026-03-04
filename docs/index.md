@@ -2913,14 +2913,18 @@ Remove unnecessary connections:
 Convert to optimized format:
 
 ```bash
+# The model conversion CLI will be provided in a future release. For now,
+# use your preferred framework's conversion utilities (e.g., ONNX converters
+# or the TensorFlow Lite Converter).
+
 # Convert to ONNX
-node tools/model/convert.js \
+<model-convert-command> \
   --model models/my-model \
   --format onnx \
   --optimize
 
 # Convert to TensorFlow Lite
-node tools/model/convert.js \
+<model-convert-command> \
   --model models/my-model \
   --format tflite \
   --optimize
