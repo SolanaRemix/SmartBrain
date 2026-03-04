@@ -247,11 +247,12 @@ chmod +x ./scripts/bootstrap.sh
 ```
 
 This script will:
+- Check Node.js and npm availability
 - Create necessary directories
-- Set up logging infrastructure
-- Initialize model registry
-- Configure validation schemas
-- Set appropriate permissions
+- Install project dependencies
+- Copy the `.env` file from the template if needed
+- Verify `models/metadata/schema.json` and workflow files exist
+- Set appropriate script permissions
 
 #### 5. Verify Installation
 
