@@ -24,10 +24,6 @@ Welcome to the SmartBrain documentation. This comprehensive guide covers all asp
 7. [Model Lifecycle](#model-lifecycle)
 8. [Model Versioning](#model-versioning)
 9. [Model Development](#model-development)
-10. [Model Training](#model-training)
-11. [Model Validation](#model-validation)
-12. [Model Registration](#model-registration)
-13. [Model Deployment](#model-deployment)
 
 ### Data Management
 14. [Dataset Requirements](#dataset-requirements)
