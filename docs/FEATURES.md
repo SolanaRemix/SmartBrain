@@ -110,14 +110,16 @@
 
 **Common Commands:**
 ```bash
-# Enable Auto Test
-/terminal SmartBrain.autoTest --enable
+# NOTE: The following are example commands; configure matching scripts/terminal targets in your project.
 
-# Run all tests
-node tools/test/run.js --all
+# Enable Auto Test (example)
+# /terminal SmartBrain.autoTest --enable
 
-# Check coverage
-node tools/test/coverage.js
+# Run all tests (example)
+# node tools/test/run.js --all
+
+# Check coverage (example)
+# node tools/test/coverage.js
 ```
 
 **Use Cases:**
