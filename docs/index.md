@@ -228,8 +228,13 @@ This checks:
 
 #### 6. Run Validation Checks
 
-Since a full automated test suite is not yet implemented, use the available validation commands to verify your installation:
+Use the available automated tests and validation commands to verify your installation:
 ```bash
+# Run Jest unit tests
+npm test
+
+# Or run unit tests only
+npm run test:unit
 # Validate model configurations and registry
 npm run validate:models
 
