@@ -2940,16 +2940,17 @@ Optimize SmartBrain for maximum performance in your environment.
 Reduce model size and improve inference speed:
 
 ```bash
-# Quantize model to INT8
-<quantization-command> \
-  --model models/my-model \
-  --precision int8 \
-  --output models/my-model-quantized
-
-# Validate accuracy after quantization
-<evaluation-command> \
-  --baseline models/my-model \
-  --candidate models/my-model-quantized
+# Example (conceptual) workflow:
+#
+# 1. Use your framework's quantization tooling to convert the model to INT8.
+#    - For example, with:
+#      - PyTorch: torch.ao.quantization / torch.quantization APIs
+#      - ONNX:    onnxruntime.quantization (e.g., quantize_dynamic)
+#    Save the result as: models/my-model-quantized
+#
+# 2. Evaluate the baseline vs. quantized model on your validation dataset.
+#    - Run inference with models/my-model and models/my-model-quantized
+#    - Compare accuracy and latency to ensure quantization meets your targets.
 ```
 
 **Expected Benefits:**
