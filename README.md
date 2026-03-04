@@ -1431,7 +1431,6 @@ Special thanks to all contributors and the blockchain development community.
 - **[Security Policy](SECURITY.md)** - Security guidelines
 - **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards
 - **[Bootstrap Report](BOOTSTRAP_REPORT.md)** - Infrastructure setup report
-- **[Feature Comparison](docs/COMPARISON.md)** - SmartBrain vs alternatives
 
 ---
 
