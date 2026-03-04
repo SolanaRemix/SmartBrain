@@ -1220,13 +1220,13 @@ Analyzes model performance and characteristics:
 
 ```bash
 # Analyze model
-node tools/analysis/model.js --model models/my-model
+npm run smart:analyze -- --mode model --model models/my-model
 
 # Compare model versions
-node tools/analysis/model.js --compare v1.0.0 v1.1.0
+npm run smart:analyze -- --mode model --compare v1.0.0 v1.1.0
 
 # Performance trends
-node tools/analysis/model.js --trends --days 30
+npm run smart:analyze -- --mode model --trends --days 30
 ```
 
 **Metrics:**
