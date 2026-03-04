@@ -2962,8 +2962,10 @@ Reduce model size and improve inference speed:
 Remove unnecessary connections:
 
 ```bash
-# Prune model
-node tools/model/prune.js \
+# Prune model (future tooling - CLI not yet included in this repo)
+# The pruning CLI will be provided in a future release. For now, use your
+# preferred framework's pruning utilities or a custom script.
+<pruning-command> \
   --model models/my-model \
   --sparsity 0.3 \
   --output models/my-model-pruned
