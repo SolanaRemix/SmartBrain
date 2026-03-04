@@ -109,10 +109,14 @@ Let's train a simple model to get familiar with SmartBrain:
 # The commands below will be updated once training and configuration
 # subcommands (config/train) and flags like --output/--epochs are available.
 
-# Current behavior: running the training CLI prints "not yet implemented".
+# Current behavior:
+# - Running the training CLI with no arguments shows the help/usage output.
 node training/cli/index.js
-# => "not yet implemented"
+# => (prints help/usage information)
 
+# - Running a specific command prints a placeholder "not yet implemented" message.
+node training/cli/index.js train
+# => "Training CLI - train command (not yet implemented)"
 # For model training and inference, please refer to the dedicated
 # training and inference documentation or higher-level scripts.
 ```
