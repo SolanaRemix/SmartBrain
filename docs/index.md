@@ -2295,8 +2295,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       
-      - name: Run Auto Fix
-        run: node tools/fix/run.js --preview --ci
+      - name: Run Auto Fix (illustrative)
+        run: echo "Run your auto-fix tooling here (e.g., npm run lint -- --fix)"
       
       - name: Create Pull Request
         if: success()
