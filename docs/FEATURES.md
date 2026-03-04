@@ -267,7 +267,7 @@ node tools/test/coverage.js
 
 ### Multi-Chain Support
 **Fully Supported:**
-- Ethereum (Mainnet, Sepolia, Goerli)
+- Ethereum (Mainnet, Sepolia, Holesky)
 - Polygon (PoS, zkEVM)
 - Solana (Mainnet-beta, Devnet, Testnet)
 - Binance Smart Chain
