@@ -74,19 +74,12 @@
 
 **Configuration File:** `.smartbrain/sync.json`
 
-**Common Commands:**
+**Common Commands (planned / not yet implemented in this repo):**
 ```bash
-# Enable Auto Sync
-/terminal SmartBrain.autoSync --enable
+# NOTE: The following commands are planned examples and are not
+# currently implemented in this repository.
 
-# Check status
-node tools/sync/status.js
-
-# Manual trigger
-node tools/sync/trigger.js
-```
-
-**Use Cases:**
+# Enable Auto Sync (planned)
 - Keep models synchronized across teams
 - Backup models automatically
 - Sync datasets for distributed training
