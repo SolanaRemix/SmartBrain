@@ -412,10 +412,10 @@ SmartBrain integrates with GitHub Copilot:
 | `SmartBrain.inference` | Run inference | `/terminal SmartBrain.inference --model my-model` |
 | `SmartBrain.train` | Train model | `/terminal SmartBrain.train --config config.json` |
 | `SmartBrain.fix` | Auto fix issues | `/terminal SmartBrain.fix` |
-| `SmartBrain.autoSync` | Manage Auto Sync | `/terminal SmartBrain.autoSync --enable` |
-| `SmartBrain.autoTest` | Manage Auto Test | `/terminal SmartBrain.autoTest --run` |
-| `SmartBrain.autoAnalysis` | Manage Auto Analysis | `/terminal SmartBrain.autoAnalysis --report` |
-| `SmartBrain.autoFix` | Manage Auto Fix | `/terminal SmartBrain.autoFix --apply` |
+| `SmartBrain.autoSync` | (Planned) Manage Auto Sync | Planned command – not currently supported |
+| `SmartBrain.autoTest` | (Planned) Manage Auto Test | Planned command – not currently supported |
+| `SmartBrain.autoAnalysis` | (Planned) Manage Auto Analysis | Planned command – not currently supported |
+| `SmartBrain.autoFix` | (Planned) Manage Auto Fix | Planned command – not currently supported |
 
 ### Script Reference
 
