@@ -957,22 +957,12 @@ Create or edit `.smartbrain/test.json`:
 # Run all tests (uses the default npm test script)
 npm test
 
-# Run all tests explicitly (if you define a dedicated script)
-npm run test:all
-
-# Run specific test suites (examples; adjust to your package.json)
+# Run specific test suites
 npm run test:unit
 npm run test:integration
-npm run test:model
-
-# Check test status
-npm run test:status
 
 # View test coverage
 npm run test:coverage
-
-# View test history
-npm run test:history
 ```
 
 #### Planned Terminal Commands
