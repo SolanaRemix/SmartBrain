@@ -241,8 +241,11 @@ npm run validate:models
 # Validate dataset configurations
 npm run validate:datasets
 
-# Verify inference CLI is working
-node inference/cli/index.js info --help
+# Verify inference CLI is working (shows top-level help)
+node inference/cli/index.js help
+
+# Or verify model info for a specific model
+node inference/cli/index.js info --model path/to/model.onnx
 ```
 
 ### Configuration Options
