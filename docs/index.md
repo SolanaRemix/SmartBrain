@@ -2356,8 +2356,10 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       
-      - name: Run Auto Sync
-        run: node tools/sync/trigger.js --all
+      - name: Run Auto Sync (placeholder)
+        run: |
+          echo "Auto Sync tooling is not yet implemented."
+          echo "Replace this step with your sync implementation when available."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
