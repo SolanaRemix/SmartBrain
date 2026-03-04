@@ -3204,7 +3204,7 @@ Typical performance metrics:
 - **GitHub Issues**: [Report bugs and request features](https://github.com/SolanaRemix/SmartBrain/issues)
 - **GitHub Discussions**: [Join community discussions](https://github.com/SolanaRemix/SmartBrain/discussions)
 - **Documentation**: This guide and inline code documentation
-- **Examples**: Check `/examples` directory for usage examples
+- **Examples**: See the [Quick Start Guide](#quick-start-guide) for usage examples
 - **Feature Comparison**: [SmartBrain vs Alternatives](COMPARISON.md)
 
 ## Contributing
