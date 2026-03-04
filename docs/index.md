@@ -2938,15 +2938,15 @@ Reduce model size and improve inference speed:
 
 ```bash
 # Quantize model to INT8
-node tools/model/quantize.js \
+<quantization-command> \
   --model models/my-model \
   --precision int8 \
   --output models/my-model-quantized
 
 # Validate accuracy after quantization
-node tools/model/compare.js \
-  models/my-model \
-  models/my-model-quantized
+<evaluation-command> \
+  --baseline models/my-model \
+  --candidate models/my-model-quantized
 ```
 
 **Expected Benefits:**
