@@ -1702,16 +1702,16 @@ node tools/fix/config.js --enable code,config,dependencies
 
 ```bash
 # Enable Auto Fix
-/terminal SmartBrain.autoFix --enable
+/terminal SmartBrain.fix --enable
 
 # Preview fixes
-/terminal SmartBrain.autoFix --preview
+/terminal SmartBrain.fix --preview
 
 # Apply fixes
-/terminal SmartBrain.autoFix --apply
+/terminal SmartBrain.fix --apply
 
 # Rollback last fixes
-/terminal SmartBrain.autoFix --rollback
+/terminal SmartBrain.fix --rollback
 ```
 
 ### Fix Modes
