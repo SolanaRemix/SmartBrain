@@ -54,10 +54,10 @@ This document provides a detailed comparison between **@SmartBrain**, **SunkBot*
 
 | Feature | @SmartBrain | SunkBot | Dependabot | Notes for Crypto Users |
 |---------|-------------|---------|------------|------------------------|
-| **Auto Sync** 🤖💎 | ✅ | ❌ | ❌ | Automatic model and dataset synchronization across repositories |
-| **Auto Test** 🤖 | ✅ | 🟡 | ❌ | Intelligent test execution with model validation |
-| **Auto Analysis** 🤖📊 | ✅ | 🟡 | ❌ | Continuous code, model, and security analysis |
-| **Auto Fix** 🤖⚡ | ✅ | ❌ | ❌ | Automated issue resolution with gas optimization |
+| **Auto Sync** 🤖💎 | 🟡 | ❌ | ❌ | Planned/partial: design supports automatic model and dataset sync; commands are rolling out incrementally |
+| **Auto Test** 🤖 | 🟡 | 🟡 | ❌ | Partially available via existing test workflows; dedicated auto-test command is planned |
+| **Auto Analysis** 🤖📊 | 🟡 | 🟡 | ❌ | Partial analysis available via standard code review; continuous auto-analysis workflow is planned |
+| **Auto Fix** 🤖⚡ | 🟡 | ❌ | ❌ | Partially available via `.fix` in the GitHub agent; full auto-fix workflow is planned |
 | **CI/CD Integration** | ✅ | ✅ | ✅ | @SmartBrain includes blockchain-specific workflows |
 | **Performance Monitoring** 📊 | ✅ | 🟡 | ❌ | Real-time model and contract performance tracking |
 
