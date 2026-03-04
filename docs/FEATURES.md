@@ -156,16 +156,20 @@ node tools/test/coverage.js
 - Dataset analysis (quality, distribution, balance)
 - Security analysis (vulnerabilities, CVEs, best practices)
 
-**Common Commands:**
+**Common Commands (placeholders / future implementation):**
 ```bash
-# Enable Auto Analysis
-/terminal SmartBrain.autoAnalysis --enable
+# NOTE: The following commands are illustrative placeholders for a future
+# Auto Analysis implementation. They reference commands/paths that may not
+# exist in the current repository and should be adapted to your setup.
 
-# Run analysis
-node tools/analysis/run.js --all
+# Enable Auto Analysis (placeholder)
+# /terminal SmartBrain.autoAnalysis --enable
 
-# View report
-node tools/analysis/report.js
+# Run analysis (placeholder)
+# node tools/analysis/run.js --all
+
+# View report (placeholder)
+# node tools/analysis/report.js
 ```
 
 **Use Cases:**
