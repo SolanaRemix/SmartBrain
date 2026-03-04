@@ -145,19 +145,16 @@ Before you begin, ensure you have:
 Let's train a simple model to get familiar with SmartBrain:
 
 ```bash
-# 1. Generate a training configuration
-node training/cli/index.js config --output training/configs/quickstart.json
+# NOTE: The training CLI is currently a placeholder and not yet implemented.
+# The commands below will be updated once training and configuration
+# subcommands (config/train) and flags like --output/--epochs are available.
 
-# 2. Train the model
-node training/cli/index.js train \
-  --config training/configs/quickstart.json \
-  --output models/quickstart-model \
-  --epochs 5
+# Current behavior: running the training CLI prints "not yet implemented".
+node training/cli/index.js
+# => "not yet implemented"
 
-# 3. Run inference
-node inference/cli/index.js predict \
-  --model models/quickstart-model \
-  --input data/sample-input.json
+# For model training and inference, please refer to the dedicated
+# training and inference documentation or higher-level scripts.
 ```
 
 ### Next Steps
