@@ -1017,19 +1017,21 @@ node tools/test/coverage.js
 node tools/test/history.js
 ```
 
-#### Terminal Commands
+#### Planned Terminal Commands
+
+> Note: The `/terminal SmartBrain.autoTest` integration is **planned** and is not yet available in the current `.github/copilot/agent.yaml` configuration.
 
 ```bash
-# Enable Auto Test
+# (Planned) Enable Auto Test
 /terminal SmartBrain.autoTest --enable
 
-# Run tests
+# (Planned) Run tests
 /terminal SmartBrain.autoTest --run
 
-# Check test status
+# (Planned) Check test status
 /terminal SmartBrain.autoTest --status
 
-# View coverage report
+# (Planned) View coverage report
 /terminal SmartBrain.autoTest --coverage
 ```
 
