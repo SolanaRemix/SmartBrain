@@ -1485,16 +1485,16 @@ Automatically fixes code issues:
 
 ```bash
 # Fix code style issues
-node tools/fix/code.js --type style
+/terminal SmartBrain.fix code --type style
 
 # Fix simple bugs
-node tools/fix/code.js --type bugs
+/terminal SmartBrain.fix code --type bugs
 
 # Fix all code issues
-node tools/fix/code.js --all
+/terminal SmartBrain.fix code --all
 
 # Preview fixes without applying
-node tools/fix/code.js --preview
+/terminal SmartBrain.fix code --preview
 ```
 
 **Fixable Issues:**
