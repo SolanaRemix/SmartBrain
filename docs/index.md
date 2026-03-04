@@ -1496,17 +1496,17 @@ Auto Fix analyzes issues detected by Auto Analysis and other tools, and automati
 Automatically fixes code issues:
 
 ```bash
-# Fix code style issues
-/terminal SmartBrain.fix code --type style
+# Run default auto-fix on the current project
+/terminal SmartBrain.fix
 
-# Fix simple bugs
-/terminal SmartBrain.fix code --type bugs
+# Fix configuration-related issues
+/terminal SmartBrain.fix configs
 
-# Fix all code issues
-/terminal SmartBrain.fix code --all
+# Fix permission-related issues
+/terminal SmartBrain.fix permissions
 
-# Preview fixes without applying
-/terminal SmartBrain.fix code --preview
+# Run all available auto-fixes
+/terminal SmartBrain.fix all
 ```
 
 **Fixable Issues:**
