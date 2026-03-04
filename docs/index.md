@@ -1097,14 +1097,14 @@ describe('Model Regression Tests', () => {
 Auto Test generates comprehensive reports:
 
 ```bash
-# View latest test report
-node tools/test/report.js
+# View latest test report (example via npm script)
+npm run test:report
 
 # Generate HTML report
-node tools/test/report.js --format html --output reports/
+npm run test:report -- --format html --output reports/
 
 # Compare test runs
-node tools/test/compare.js --runs 5
+npm run test:compare -- --runs 5
 ```
 
 **Report Contents:**
