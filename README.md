@@ -1030,11 +1030,12 @@ Special thanks to all contributors and the blockchain development community.
 - **[Features Quick Reference](docs/FEATURES.md)** - Quick reference to all features
 - **[Feature Comparison](docs/COMPARISON.md)** - SmartBrain vs alternatives (SunkBot, Dependabot)
 
-### Automation Features
-- **[Auto Sync](docs/index.md#auto-sync)** - Automated repository synchronization
-- **[Auto Test](docs/index.md#auto-test)** - Intelligent test execution
-- **[Auto Analysis](docs/index.md#auto-analysis)** - Continuous code and model analysis
-- **[Auto Fix](docs/index.md#auto-fix)** - Automated issue resolution
+### Automation Features (Roadmap)
+These automation capabilities are planned and currently under active development; they are not yet available in the main release.
+- **[Auto Sync](docs/index.md#auto-sync)** *(planned)* - Automated repository synchronization
+- **[Auto Test](docs/index.md#auto-test)** *(planned)* - Intelligent test execution
+- **[Auto Analysis](docs/index.md#auto-analysis)** *(planned)* - Continuous code and model analysis
+- **[Auto Fix](docs/index.md#auto-fix)** *(planned)* - Automated issue resolution
 
 ### Integration & Operations
 - **[CI/CD Integration](docs/index.md#cicd-integration)** - GitHub Actions and more
