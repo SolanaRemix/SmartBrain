@@ -15,6 +15,24 @@
 
 SmartBrain is a comprehensive platform that combines AI/ML capabilities with Stripe-powered automation bots for smart contract development. It provides a complete infrastructure for model training, inference, and automated smart contract deployment and auditing.
 
+## 🖼️ UI Screenshots
+
+### Landing Page
+
+![SmartBrain Landing Page](docs/screenshots/landing-page.png)
+
+### Admin Dashboard
+
+![SmartBrain Admin Dashboard](docs/screenshots/admin-dashboard.png)
+
+### User Dashboard
+
+![SmartBrain User Dashboard](docs/screenshots/user-dashboard.png)
+
+### Developer Portal
+
+![SmartBrain Developer Portal](docs/screenshots/developer-portal.png)
+
 ### Key Features
 
 - 🤖 **ML Pipeline**: Complete training and inference infrastructure
