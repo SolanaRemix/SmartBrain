@@ -42,3 +42,11 @@ logs/
 # Temporary files
 tmp/
 temp/
+
+# Rust / Anchor build artifacts
+target/
+.anchor/
+test-ledger/
+**/*.so
+**/*.d
+
