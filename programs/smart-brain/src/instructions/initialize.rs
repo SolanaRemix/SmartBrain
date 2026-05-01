@@ -1,5 +1,7 @@
 use anchor_lang::prelude::*;
-use crate::state::{SmartBrainState, SMARTBRAIN_SEED};
+use crate::state::{
+    ExecutionRecord, SmartBrainState, EXECUTION_RECORD_SEED, SMARTBRAIN_SEED,
+};
 
 // ---------------------------------------------------------------------------
 // Accounts
@@ -18,6 +20,17 @@ pub struct Initialize<'info> {
         bump
     )]
     pub smart_brain: Account<'info, SmartBrainState>,
+
+    /// The execution-record log PDA — initialized alongside the state so that
+    /// `execute` can always assume the account already exists.
+    #[account(
+        init,
+        payer = authority,
+        space = ExecutionRecord::SPACE,
+        seeds = [EXECUTION_RECORD_SEED, authority.key().as_ref()],
+        bump
+    )]
+    pub execution_record: AccountLoader<'info, ExecutionRecord>,
 
     /// The wallet that will own and control this state account.
     #[account(mut)]
@@ -41,6 +54,11 @@ pub fn handler(ctx: Context<Initialize>) -> Result<()> {
     state.last_updated_at = Clock::get()?.unix_timestamp;
     state.version = 1;
     state._reserved = [0u8; 338];
+
+    let mut record = ctx.accounts.execution_record.load_init()?;
+    record.authority = ctx.accounts.authority.key();
+    record.bump = ctx.bumps.execution_record;
+    record.count = 0;
 
     Ok(())
 }

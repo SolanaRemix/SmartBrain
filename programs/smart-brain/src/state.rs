@@ -1,7 +1,8 @@
 use anchor_lang::prelude::*;
 
 /// Maximum byte length of an execution payload stored on-chain.
-pub const MAX_PAYLOAD_LEN: usize = 256;
+/// Capped at 255 so that `payload_len: u8` can losslessly represent the full range.
+pub const MAX_PAYLOAD_LEN: usize = 255;
 
 /// Maximum number of executions tracked in the execution log.
 pub const MAX_EXECUTION_LOG: usize = 32;
@@ -9,14 +10,17 @@ pub const MAX_EXECUTION_LOG: usize = 32;
 /// Seeds used for PDA derivation of the SmartBrain state account.
 pub const SMARTBRAIN_SEED: &[u8] = b"smartbrain";
 
+/// Seeds used for PDA derivation of the execution-record log account.
+pub const EXECUTION_RECORD_SEED: &[u8] = b"exec_log";
+
 // ---------------------------------------------------------------------------
 // SmartBrainState
 // ---------------------------------------------------------------------------
 
 /// Primary state account for the SmartBrain program.
 ///
-/// Size: 8 (discriminator) + std::mem::size_of::<SmartBrainState>()
-///       = 8 + 397 = 405 bytes (well under the 1 024-byte ZeroCopy threshold).
+/// Serialized on-chain size: discriminator(8) + LEN(397) = 405 bytes
+/// (well under the 1 024-byte ZeroCopy threshold).
 #[account]
 #[derive(Default)]
 pub struct SmartBrainState {
@@ -71,12 +75,9 @@ pub struct ExecutionRecord {
 }
 
 impl ExecutionRecord {
-    /// Borsh-serialized layout:
-    ///   authority(32) + bump(1) + count(4) + _pad(3)
-    ///   + entries(32 × 320) = 32 + 1 + 4 + 3 + 10240 = 10280 bytes.
-    ///   SPACE = discriminator(8) + 10280 = 10288.
-    pub const LEN: usize = 32 + 1 + 4 + 3 + (MAX_EXECUTION_LOG * ExecutionEntry::LEN);
-    pub const SPACE: usize = 8 + Self::LEN;
+    /// SPACE uses `std::mem::size_of` to correctly account for any
+    /// `#[repr(C)]`-mandated alignment padding between fields.
+    pub const SPACE: usize = 8 + std::mem::size_of::<ExecutionRecord>();
 }
 
 /// A single entry in the execution log.
@@ -90,14 +91,14 @@ pub struct ExecutionEntry {
     /// Execution counter at the time of the call.
     pub sequence: u64, // 8
     /// Inline payload snapshot (first MAX_PAYLOAD_LEN bytes of the call data).
-    pub payload: [u8; MAX_PAYLOAD_LEN], // 256
+    pub payload: [u8; MAX_PAYLOAD_LEN], // 255
     /// Actual payload length recorded (≤ MAX_PAYLOAD_LEN).
     pub payload_len: u8, // 1
     /// Reserved for future fields.
-    pub _reserved: [u8; 15], // 15  →  entry total = 320
+    pub _reserved: [u8; 16], // 16  →  entry total = 320
 }
 
 impl ExecutionEntry {
-    /// Borsh-serialized size: 32 + 8 + 8 + 256 + 1 + 15 = 320 bytes.
-    pub const LEN: usize = 32 + 8 + 8 + MAX_PAYLOAD_LEN + 1 + 15;
+    /// Borsh-serialized size: 32 + 8 + 8 + 255 + 1 + 16 = 320 bytes.
+    pub const LEN: usize = 32 + 8 + 8 + MAX_PAYLOAD_LEN + 1 + 16;
 }

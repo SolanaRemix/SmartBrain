@@ -19,7 +19,7 @@ pub mod smart_brain {
 
     /// Records an execution against the SmartBrain state.
     ///
-    /// `payload` is an arbitrary byte vector (≤ 256 bytes) that the caller
+    /// `payload` is an arbitrary byte vector (≤ 255 bytes) that the caller
     /// wants to log on-chain.
     pub fn execute(ctx: Context<Execute>, payload: Vec<u8>) -> Result<()> {
         instructions::execute::handler(ctx, payload)

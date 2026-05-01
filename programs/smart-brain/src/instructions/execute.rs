@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 use crate::{
     error::ErrorCode,
     state::{
-        ExecutionRecord, SmartBrainState, MAX_EXECUTION_LOG, MAX_PAYLOAD_LEN,
+        ExecutionRecord, SmartBrainState, EXECUTION_RECORD_SEED, MAX_EXECUTION_LOG, MAX_PAYLOAD_LEN,
         SMARTBRAIN_SEED,
     },
 };
@@ -10,10 +10,6 @@ use crate::{
 // ---------------------------------------------------------------------------
 // Accounts
 // ---------------------------------------------------------------------------
-
-/// Seeds for the execution-record PDA — derived from authority + "log" suffix
-/// so it is uniquely scoped to the authority-owned state.
-pub const EXECUTION_RECORD_SEED: &[u8] = b"exec_log";
 
 #[derive(Accounts)]
 pub struct Execute<'info> {
@@ -27,16 +23,16 @@ pub struct Execute<'info> {
     )]
     pub smart_brain: Account<'info, SmartBrainState>,
 
-    /// Zero-copy execution log — must be owned by the same authority.
+    /// Zero-copy execution log — initialized in `initialize`, scoped to the authority.
     #[account(
         mut,
         seeds = [EXECUTION_RECORD_SEED, authority.key().as_ref()],
-        bump,
+        bump = execution_record.load()?.bump,
         constraint = execution_record.load()?.authority == authority.key() @ ErrorCode::Unauthorized
     )]
     pub execution_record: AccountLoader<'info, ExecutionRecord>,
 
-    /// Caller / payer — must be the registered authority.
+    /// Caller — must be the registered authority.
     #[account(mut)]
     pub authority: Signer<'info>,
 
@@ -88,7 +84,7 @@ pub fn handler(ctx: Context<Execute>, payload: Vec<u8>) -> Result<()> {
             entry.payload[copy_len..].fill(0);
         }
         entry.payload_len = copy_len as u8;
-        entry._reserved = [0u8; 15];
+        entry._reserved = [0u8; 16];
 
         record.count = record
             .count
