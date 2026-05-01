@@ -1,0 +1,23 @@
+[package]
+name = "smart-brain"
+version = "0.1.0"
+description = "SmartBrain Solana on-chain program — production-hardened Anchor 0.30.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "smart_brain"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = { version = "0.30.0", features = ["init-if-needed"] }
+bytemuck = { version = "1.14", features = ["derive"] }
+
+[dev-dependencies]
+anchor-lang = { version = "0.30.0", features = ["init-if-needed"] }
