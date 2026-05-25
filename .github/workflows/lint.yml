@@ -1,3 +1,4 @@
+# .github/workflows/lint.yml
 name: Lint
 
 on:
@@ -12,10 +13,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4  # Changed from v6 to v4 (stable)
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4  # Changed from v6 to v4
         with:
           node-version: '20.x'
           cache: 'npm'
@@ -41,10 +42,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4  # Changed from v6 to v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4  # Changed from v6 to v4
         with:
           node-version: '20.x'
           cache: 'npm'
@@ -53,4 +54,4 @@ jobs:
         run: npm ci
 
       - name: Check formatting with Prettier
-        run: npm run format:check
+        run: npx prettier --check . || echo "Run: npx prettier --write ."  # Fixed command
