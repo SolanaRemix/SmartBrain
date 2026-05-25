@@ -1,0 +1,21 @@
+name: "Quick Repair"
+on:
+  workflow_dispatch:
+    inputs:
+      repair_type:
+        description: 'Repair type'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - clean
+          - build
+          - test
+
+jobs:
+  repair:
+    uses: SolanaRemix/node/.github/workflows/atomic-prod.yml@main
+    with:
+      repair_type: ${{ inputs.repair_type }}
+    secrets: inherit
