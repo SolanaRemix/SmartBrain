@@ -20,4 +20,4 @@ jobs:
     with:
       repair_type: ${{ inputs.repair_type }}
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
